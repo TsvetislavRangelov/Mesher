@@ -2,7 +2,7 @@ services:
   client:
     image: mesher-client:latest
     build:
-      context: .
+      context: ./mesher-client
       target: dev
     environment:
       NODE_ENV: prod
@@ -10,6 +10,6 @@ services:
       - 3000:3000
       - 9229:9299
     volumes:
-    - .:/usr/src/client
+    - ./mesher-client:/usr/src/client
     - /usr/src/client/node_modules
-    - ./src:/usr/src/client/src
+    - ./mesher-client/src:/usr/src/client/src
