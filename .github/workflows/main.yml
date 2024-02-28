@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,6 +23,13 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKERHUB_CLIENT_TOKEN }}
       -
+        name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+            images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       -
@@ -28,3 +39,4 @@ jobs:
           context: .
           push: true
           target: prod
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ steps.meta.outputs.tags }}:latest
