@@ -13,7 +13,7 @@ services:
       context: .
       target: dev
     environment:
-      NODE_ENV: production
+      NODE_ENV: prod
     ports:
       - 5173:5173
       - 9229:9299
