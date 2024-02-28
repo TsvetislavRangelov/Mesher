@@ -1,5 +1,3 @@
-import { Vector3 } from "@react-three/fiber";
-
 export interface MeshProps {
     geometryX: number;
     geometryY: number;

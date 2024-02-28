@@ -1,6 +1,6 @@
 import { useFrame } from '@react-three/fiber';
-import {MeshProps} from './props/MeshProps';
 import { useRef } from 'react';
+import MeshProps from './props/MeshProps';
 
 const Mesh = (props: MeshProps) => {
     const mesh = useRef<THREE.Mesh>(null!);
