@@ -12,12 +12,15 @@
   "dependencies": {
     "@react-three/drei": "^9.99.4",
     "@tanstack/react-query": "^5.24.1",
+    "@types/axios": "^0.14.0",
     "@types/dat.gui": "^0.7.12",
+    "axios": "^1.6.7",
     "dat.gui": "^0.7.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.20.1",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
