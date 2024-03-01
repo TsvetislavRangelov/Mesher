@@ -17,6 +17,9 @@ npm install
 docker compose up --build
 ```
 
+## Structure
+This is the monorepo for Mesher. It contains all services related to mesher, both client and server. The client-side can be found under `mesher-client` and the backend services can be found under `Services`. The server-side is written in .NET 8.0 and the client is made with React TypeScript.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
