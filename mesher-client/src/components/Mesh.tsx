@@ -1,17 +1,34 @@
-import { useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
-import MeshProps from './props/MeshProps';
+import { GUI } from 'dat.gui';
+import { useEffect, useRef } from 'react';
+
+interface MeshProps {
+    geometryX: number;
+    geometryY: number;
+    geometryZ: number;
+    rotationX?: number;
+    rotationY?: number;
+    rotationZ?: number;
+}
 
 const Mesh = (props: MeshProps) => {
+
     const mesh = useRef<THREE.Mesh>(null!);
-    useFrame(() => {
-        mesh.current.rotation.x += 0.02;
-        mesh.current.rotation.y += 0.02; 
-    })
-    return <mesh rotation-x={2} rotation-y={10} ref={mesh}>
+
+    useEffect(() => {
+        const gui = new GUI()
+        gui.add(mesh.current.rotation, 'x', 0, Math.PI * 2)
+        gui.add(mesh.current.rotation, 'y', 0, Math.PI * 2)
+        gui.add(mesh.current.rotation, 'z', 0, Math.PI * 2)
+        return () => {
+          gui.destroy()
+        }
+      }, [])
+    return (
+    <mesh rotation-x={props.rotationX} rotation-y={props.rotationY} ref={mesh}>
         <boxGeometry args={[props.geometryX, props.geometryY, props.geometryZ]} />
-        <meshStandardMaterial color={"lime"} />
+        <meshPhongMaterial color={"lime"} />
     </mesh>
+    )
 }
 
 export default Mesh;

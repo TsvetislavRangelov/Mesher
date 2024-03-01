@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@react-three/drei": "^9.99.4",
+    "@types/dat.gui": "^0.7.12",
+    "dat.gui": "^0.7.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
