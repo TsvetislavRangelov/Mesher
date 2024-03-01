@@ -1,5 +1,6 @@
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls, Stats } from "@react-three/drei";
+import { Environment, OrbitControls, Stats } from "@react-three/drei";
+import { Suspense } from "react";
 
 type Props = {
   mesh: React.ReactNode;
@@ -8,12 +9,12 @@ type Props = {
 const Renderer = (props: Props) => {
     return <div className="canvas-container">
     <Canvas>
-        <color attach="background" args={["black"]}></color>
-      <ambientLight color="white" intensity={0.1} />
-      <directionalLight position={[0, 0, 5]} />
+      <Suspense fallback={null}>
       {props.mesh}
-      <OrbitControls></OrbitControls>
-      <Stats></Stats>
+      <OrbitControls autoRotate></OrbitControls>
+      <Stats />
+      <Environment files={'/rustig_koppie_puresky_1k.hdr'} background/>
+      </Suspense>
     </Canvas>
   </div>
 }
