@@ -1,6 +1,6 @@
 @GeometryGeneratorNonSampled_HostAddress = http://localhost:5215
 
-GET {{GeometryGeneratorNonSampled_HostAddress}}/test/
+GET {{GeometryGeneratorNonSampled_HostAddress}}/GeometryTest/
 Accept: application/json
 
 ###
