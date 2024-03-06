@@ -25,7 +25,7 @@ COPY . .
 CMD node src/main.tsx
 
 # Development environment.
-FROM base as dev
+FROM base as final
 ENV NODE_ENV dev
 
 RUN --mount=type=bind,source=package.json,target=package.json \

@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{58
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeometryGeneratorNonSampled", "Services\GeometryGeneratorNonSampled\GeometryGeneratorNonSampled.csproj", "{45A06F81-890F-43E8-8662-55D5285E7302}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "Services\ApiGateway\ApiGateway.csproj", "{21E0DBB0-3D97-4ABD-B35C-99D4E177D60C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{45A06F81-890F-43E8-8662-55D5285E7302}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45A06F81-890F-43E8-8662-55D5285E7302}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45A06F81-890F-43E8-8662-55D5285E7302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21E0DBB0-3D97-4ABD-B35C-99D4E177D60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21E0DBB0-3D97-4ABD-B35C-99D4E177D60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21E0DBB0-3D97-4ABD-B35C-99D4E177D60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21E0DBB0-3D97-4ABD-B35C-99D4E177D60C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{45A06F81-890F-43E8-8662-55D5285E7302} = {58D56EBC-5E42-4CCE-A71F-EF088C9650C3}
+		{21E0DBB0-3D97-4ABD-B35C-99D4E177D60C} = {58D56EBC-5E42-4CCE-A71F-EF088C9650C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9490A4AD-01DC-4AD3-A64B-B59361AE4F4A}

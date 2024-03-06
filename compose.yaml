@@ -1,6 +1,6 @@
 services:
   client:
-    image: mesher-client:latest
+    image: mesher-client:${TAG:-latest}
     build:
       context: ./mesher-client
       target: dev
@@ -14,9 +14,14 @@ services:
     - /usr/src/client/node_modules
     - ./mesher-client/src:/usr/src/client/src
   geometryGeneratorNonSampled:
-    image: geometryGeneratorNonSampled:latest
+    image: geometrygeneratornonsampled:${TAG:-latest}
     build:
       context: ./Services/GeometryGeneratorNonSampled
       target: final
     ports: 
       - 8080:8080
+  apigw:
+    image: apigw:${TAG:-latest}
+    build:
+      context: ./Services/ApiGateway
+      target: final

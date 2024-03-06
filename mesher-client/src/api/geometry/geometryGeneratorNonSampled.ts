@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url:string = 'http://localhost:5215/api/GeometryTest/GetArray';
+const url:string = 'http://localhost:8080/api/GeometryNonSampled/GetArray';
 
 export const getGeometryVector = async (): Promise<any> => {
     try{
