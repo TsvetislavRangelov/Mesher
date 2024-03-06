@@ -5,7 +5,7 @@ namespace GeometryGeneratorNonSampled.Controllers;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class GeometryTestController(ILogger<string> logger) : ControllerBase
+public class GeometryNonSampledController(ILogger<string> logger) : ControllerBase
 {
 
     private readonly ILogger<string> _logger = logger;
