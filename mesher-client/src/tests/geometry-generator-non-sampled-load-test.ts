@@ -5,6 +5,10 @@ export const options = {
   vus: 10,
   // A string specifying the total duration of the test run.
   duration: '10s',
+  thresholds: {
+    http_req_failed: ['rate<0.01'],
+    http_req_duration: ['p(99)<1000']
+  }
 };
 
 export default () => {

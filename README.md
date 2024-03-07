@@ -10,9 +10,6 @@ git clone https://github.com/TsvetislavRangelov/mesher
 # cd into the directory.
 cd Mesher
 
-# install packages.
-npm install
-
 # Build the containers.
 docker compose up --build
 ```
@@ -29,4 +26,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-<TO BE UPDATED>
+To be updated.
