@@ -17,10 +17,15 @@ jobs:
             include:
               - dockerfile: ./Services/GeometryGeneratorNonSampled/Dockerfile
                 image: ghcr.io/TsvetislavRangelov/mesher-geometry-generator-nonsampled
+                working-directory: ./Services/GeometryGeneratorNonSampled
+
               - dockerfile: ./Services/ApiGateway/Dockerfile
                 image: ghcr.io/TsvetislavRangelov/mesher-apigw
+                working-directory: ./Services/ApiGateway
+
               - dockerfile: ./mesher-client/Dockerfile
                 image: ghcr.io/TsvetislavRangelov/mesher-web-client
+                working-directory: ./mesher-client
     permissions:
       contents: read
       packages: write 
