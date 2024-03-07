@@ -3,7 +3,7 @@ services:
     image: mesher-client:${TAG:-latest}
     build:
       context: ./mesher-client
-      target: dev
+      target: final
     environment:
       NODE_ENV: prod
     ports:
