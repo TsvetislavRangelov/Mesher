@@ -24,7 +24,7 @@ jobs:
 
               - dockerfile: ./mesher-client/Dockerfile
                 image: ghcr.io/TsvetislavRangelov/mesher-web-client
-                working-directory: ./mesher-client
+                working-directory: ./mesher-client 
     permissions:
       contents: read
       packages: write 
@@ -53,7 +53,7 @@ jobs:
         name: Build and Push Mesher Images
         uses: docker/build-push-action@v5
         with:
-          context: ./Services/ApiGateway
+          context: ${{matrix.working-directory}}
           file: ${{matrix.dockerfile}}
           push: true
           tags: ${{steps.meta.outputs.tags}}
