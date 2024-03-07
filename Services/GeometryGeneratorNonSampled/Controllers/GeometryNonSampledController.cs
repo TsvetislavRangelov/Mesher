@@ -1,27 +1,22 @@
 using System.Numerics;
+using GeometryGeneratorNonSampled.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeometryGeneratorNonSampled.Controllers;
 
+/// <summary>
+/// HTTP Endpoint for generating geometric vectors or matrices.
+/// </summary>
+/// <param name="generator">The generator service.</param>
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class GeometryNonSampledController(ILogger<string> logger) : ControllerBase
+public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator) : ControllerBase
 {
-
-    private readonly ILogger<string> _logger = logger;
+    
 
     [HttpGet(Name = "nums")]
     public IActionResult GetArray()
     {
-        // TODO: This currently handles cube geometry only(box).
-        // the api should handle generating a random geometry suitable
-        // for all geometric primitives as a first step.
-        const int lowerThreshold = 1;
-        const int upperThreshold = 7;
-        var rand = new Random();
-        var vector = new Vector3(rand.Next(lowerThreshold, upperThreshold), 
-            rand.Next(lowerThreshold, upperThreshold), rand
-                .Next(lowerThreshold, upperThreshold));
-        return Ok(new int[] {(int)vector.X, (int)vector.Y, (int)vector.Z});
+        return Ok(generator.Generate());
     }
 }

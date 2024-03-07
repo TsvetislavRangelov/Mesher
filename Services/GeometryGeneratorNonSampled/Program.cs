@@ -1,3 +1,6 @@
+using GeometryGeneratorNonSampled.Services.Implementation;
+using GeometryGeneratorNonSampled.Services.Interfaces;
+
 var allowSpecificOrigins = "dev";
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,8 @@ builder.Services.AddCors(options =>
             policy.WithOrigins("http://localhost:3000");
         });
 });
+
+builder.Services.AddSingleton<IGeometryGeneratorNonSampled, GeometryGeneratorNonSampledService>();
 
 var app = builder.Build();
 
