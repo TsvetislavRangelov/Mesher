@@ -1,10 +1,11 @@
+
 import axios from "axios";
 
-const url:string = 'http://localhost:8080/api/GeometryNonSampled/GetArray';
+const url:string = 'http://localhost:8080/api/GeometryNonSampled/GenerateVertices';
 
-export const getGeometryVector = async (): Promise<any> => {
+export const getGeometryVector = async (): Promise<number[] | undefined> => {
     try{
-        const res =  (await axios.get(url)).data;
+        const res =  (await axios.get<number[]>(url)).data;
         console.log(res);
         return res;
     }

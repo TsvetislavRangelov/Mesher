@@ -14,9 +14,13 @@ public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator
 {
     
 
-    [HttpGet(Name = "nums")]
-    public IActionResult GetArray()
+    /// <summary>
+    /// Endpoint for procedurally generating vertices.
+    /// </summary>
+    /// <returns><see cref="IActionResult"/>.</returns>
+    [HttpGet]
+    public IActionResult GenerateVertices()
     {
-        return Ok(generator.Generate());
+        return Ok(generator.GenerateVertices(null));
     }
 }

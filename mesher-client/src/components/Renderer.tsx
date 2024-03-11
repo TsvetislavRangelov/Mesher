@@ -9,7 +9,7 @@ type Props = {
 const Renderer = (props: Props) => {
     return <div className="canvas-container">
     <Canvas>
-      <Suspense fallback={null}>
+      <Suspense fallback={false}>
       {props.mesh}
       <OrbitControls autoRotate></OrbitControls>
       <Stats />

@@ -1,22 +1,24 @@
-using System.Numerics;
 using GeometryGeneratorNonSampled.Services.Interfaces;
 
 namespace GeometryGeneratorNonSampled.Services.Implementation;
-
-
+/// <summary>
+/// Implements <see cref="IGeometryGeneratorNonSampled"/>.
+/// </summary>
 public class GeometryGeneratorNonSampledService : IGeometryGeneratorNonSampled
 {
-    public int[] Generate()
+    private readonly Random _rand = new();
+    public float[] GenerateVertices(int? vertexCount)
     {
-        // TODO: This currently handles cube geometry only(box).
-        // the api should handle generating a random geometry suitable
-        // for all geometric primitives as a first step.
-        const int lowerThreshold = 1;
-        const int upperThreshold = 7;
-        var rand = new Random();
-        var vector = new Vector3(rand.Next(lowerThreshold, upperThreshold), 
-            rand.Next(lowerThreshold, upperThreshold), rand
-                .Next(lowerThreshold, upperThreshold));
-        return [(int)vector.X, (int)vector.Y, (int)vector.Z];
+        var vertexArrayCapacity = vertexCount ?? _rand.Next(3, 25000);
+        var vertices = new float[vertexArrayCapacity * 3];
+        for (int i = 0; i < vertices.Length; i++)
+        {
+            var floatProduct = (float)_rand.NextDouble();
+            if(i % 2 == 0){
+             floatProduct -= 1;   
+            }
+            vertices[i] = floatProduct;
+        }
+        return vertices;
     }
 }

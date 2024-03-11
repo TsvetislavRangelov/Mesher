@@ -9,17 +9,6 @@ function App() {
     queryKey: ['geometry'],
     queryFn: getGeometryVector,
   })
-  const generateRandomOrientation = (thresholdLower: number, thresholdUpper: number): number[] => {
-    const lowerCeiled = Math.ceil(thresholdLower);
-    const upperCeiled = Math.ceil(thresholdUpper);
-    let orientation: Array<number> = new Array<number>(3);
-    for(let i: number = 0; i < 3; i++){
-        orientation[i] = Math.floor(Math.random() * (upperCeiled - lowerCeiled) + lowerCeiled);
-    }
-    return orientation;
-    
-}
-const randomOrientation: number[] = generateRandomOrientation(1, 6);
 
   if(isPending) return <div>Loading...</div>
   if(error) return <div>An unexpected error occured: <br />
@@ -28,12 +17,7 @@ const randomOrientation: number[] = generateRandomOrientation(1, 6);
 
   return (
    <Renderer mesh={
-    <Mesh geometryX={data[0]} 
-    geometryY={data[1]} 
-    geometryZ={data[2]}
-    rotationX={randomOrientation[0]}
-    rotationY={randomOrientation[1]}
-    rotationZ={randomOrientation[2]}></Mesh>
+    <Mesh geometry={data!}></Mesh>
    }>
    </Renderer>
   );
