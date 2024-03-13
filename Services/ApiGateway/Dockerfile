@@ -1,23 +1,18 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER $gateway_UID
-WORKDIR /gateway
-EXPOSE 6543
+﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+WORKDIR /app
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
-WORKDIR /gateway
-COPY ApiGateway.csproj /gateway
-RUN dotnet restore "ApiGateway.csproj"
-COPY . .
-RUN dotnet build "ApiGateway.csproj" -c $BUILD_CONFIGURATION -o /gateway/build
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "ApiGateway.csproj" -c $BUILD_CONFIGURATION -o /gateway/publish /p:UseAppHost=false
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
 
-FROM base AS final
-LABEL org.opencontainers.image.source=https://github.com/TsvetislavRangelov/mesher
-LABEL org.opencontainers.image.description="Mesher API Gateway"
-WORKDIR /gateway
-COPY --from=publish /gateway/publish .
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+ENV ASPNETCORE_ENVIRONMENT=Docker \
+    ASPNETCORE_URLS=http://+:5000
+WORKDIR /app
+COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "ApiGateway.dll"]

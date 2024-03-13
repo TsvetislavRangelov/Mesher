@@ -1,38 +1,16 @@
-using Ocelot.DependencyInjection;
-using Ocelot.Middleware;
-
-namespace ApiGateway
+var builder = WebApplication.CreateBuilder(args);
+var allowSpecificOrigins = "dev";
+builder.Services.AddCors(options =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
+    options.AddPolicy(name: allowSpecificOrigins,
+        policy =>
         {
-            new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    config
-                        .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-                        .AddJsonFile("appsettings.json", true, true)
-                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-                        .AddJsonFile("ocelot.json")
-                        .AddEnvironmentVariables();
-                })
-                .ConfigureServices(s => {
-                    s.AddOcelot();
-                })
-                .ConfigureLogging((hostingContext, logging) =>
-                {
-                    //TODO: Add Logging.
-                })
-                .UseIISIntegration()
-                .Configure(app =>
-                {
-                    app.UseOcelot().Wait();
-                })
-                .Build()
-                .Run();
-        }
-    }
-}
+            policy.WithOrigins("http://mesher-client-1:3000");
+        });
+});
+builder.Services.AddReverseProxy()
+    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+var app = builder.Build();
+app.UseCors(allowSpecificOrigins);
+app.MapReverseProxy();
+app.Run();

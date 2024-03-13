@@ -30,9 +30,10 @@ LABEL org.opencontainers.image.source=https://github.com/TsvetislavRangelov/mesh
 LABEL org.opencontainers.image.description="Mesher Web Client"
 ENV NODE_ENV dev
 
+
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
     --mount=type=cache,target=/root/.npm \
     npm ci --include=dev
-
+    
 CMD npm run dev
