@@ -1,0 +1,22 @@
+services:
+  client:
+    image: mesher-client:${TAG:-latest}
+    build:
+      context: ./mesher-client
+      target: final
+    ports:
+      - 3000:3000
+  geometryGeneratorNonSampled:
+    image: geometrygeneratornonsampled:${TAG:-latest}
+    build:
+      context: ./Services/GeometryGeneratorNonSampled
+      target: final
+    ports: 
+      - 8080:8080
+  apigw:
+    image: apigw:${TAG:-latest}
+    build:
+      context: ./Services/ApiGateway
+      target: final
+    ports:
+    - 5000:5000
