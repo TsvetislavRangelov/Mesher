@@ -10,9 +10,10 @@ git clone https://github.com/TsvetislavRangelov/mesher
 # cd into the directory.
 cd Mesher
 
-# Build the containers.
-docker compose up --build
+# Execute the build script (Linux).
+./build.sh
 ```
+This will call docker compose by passing in the `build.yaml` file. It will build all services that are defined there. 
 
 ## Structure
 This is the monorepo for Mesher. It contains all services related to mesher, both client and server. The client-side can be found under `mesher-client` and the backend services can be found under `Services`. The server-side is written in .NET 8.0 and the client is made with React TypeScript.
