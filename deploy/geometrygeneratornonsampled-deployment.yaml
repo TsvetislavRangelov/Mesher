@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../build.yaml
+    kompose.version: 1.32.0 (765fde254)
+  labels:
+    io.kompose.service: geometrygeneratornonsampled
+  name: geometrygeneratornonsampled
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: geometrygeneratornonsampled
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../build.yaml
+        kompose.version: 1.32.0 (765fde254)
+      labels:
+        io.kompose.network/mesher-default: "true"
+        io.kompose.service: geometrygeneratornonsampled
+    spec:
+      containers:
+        - image: ghcr.io/tsvetislavrangelov/mesher-geometry-generator-nonsampled:master
+          name: geometrygeneratornonsampled
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+              protocol: TCP
+      restartPolicy: Always

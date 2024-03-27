@@ -1,19 +1,24 @@
 services:
   client:
+    container_name: client
     image: mesher-client:${TAG:-latest}
     build:
       context: ./mesher-client
       target: final
     ports:
       - 3000:3000
+    labels:
+      kompose.service.type: LoadBalancer
   geometryGeneratorNonSampled:
+    container_name: geometrygeneratornonsampled
     image: geometrygeneratornonsampled:${TAG:-latest}
     build:
       context: ./Services/GeometryGeneratorNonSampled
       target: final
-    ports: 
+    ports:
       - 8080:8080
   apigw:
+    container_name: apigw
     image: apigw:${TAG:-latest}
     build:
       context: ./Services/ApiGateway
