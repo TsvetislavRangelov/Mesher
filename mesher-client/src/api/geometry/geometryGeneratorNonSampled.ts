@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-const url:string = 'http://geometrygeneratornonsampled:5000';
+const url:string = 'http://apigw:5000';
 
 export const getGeometryVector = async (): Promise<number[] | undefined> => {
     try{

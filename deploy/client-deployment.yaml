@@ -26,7 +26,7 @@ spec:
       containers:
         - image: ghcr.io/tsvetislavrangelov/mesher-web-client:master
           name: client
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
               hostPort: 3000
