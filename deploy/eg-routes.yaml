@@ -1,0 +1,13 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: geometrygeneratornonsampled
+spec:
+  parentRefs:
+    - name: eg
+  hostnames:
+    - "www.mesher.com"
+  rules:
+    - backendRefs:
+        - name: geometrygeneratornonsampled
+          port: 8080

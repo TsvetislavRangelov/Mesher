@@ -2,8 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -f ../build.yaml
-    kompose.service.type: LoadBalancer
+    kompose.cmd: kompose convert -f ../deploy.yaml
+    kompose.image-pull-policy: Always
+    kompose.service.nodeport.port: "30000"
+    kompose.service.type: nodeport
     kompose.version: 1.32.0 (765fde254)
   labels:
     io.kompose.service: client
@@ -16,8 +18,10 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -f ../build.yaml
-        kompose.service.type: LoadBalancer
+        kompose.cmd: kompose convert -f ../deploy.yaml
+        kompose.image-pull-policy: Always
+        kompose.service.nodeport.port: "30000"
+        kompose.service.type: nodeport
         kompose.version: 1.32.0 (765fde254)
       labels:
         io.kompose.network/mesher-default: "true"
@@ -25,8 +29,8 @@ spec:
     spec:
       containers:
         - image: ghcr.io/tsvetislavrangelov/mesher-web-client:master
-          name: client
           imagePullPolicy: Always
+          name: client
           ports:
             - containerPort: 3000
               hostPort: 3000

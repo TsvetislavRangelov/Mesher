@@ -1,7 +1,7 @@
 services:
   client:
     container_name: client
-    image: mesher-client:${TAG:-latest}
+    image: ghcr.io/tsvetislavrangelov/mesher-web-client:master
     build:
       context: ./mesher-client
       target: final
@@ -9,23 +9,15 @@ services:
       - 3000:3000
     labels:
       kompose.service.type: nodeport
+      kompose.service.nodeport.port: 30000
       kompose.image-pull-policy: "Always"
   geometryGeneratorNonSampled:
     container_name: geometrygeneratornonsampled
-    image: geometrygeneratornonsampled:${TAG:-latest}
+    image: ghcr.io/tsvetislavrangelov/mesher-geometry-generator-nonsampled:master
     build:
       context: ./Services/GeometryGeneratorNonSampled
       target: final
     ports:
       - 8080:8080
-  apigw:
-    container_name: apigw
-    image: apigw:${TAG:-latest}
-    build:
-      context: ./Services/ApiGateway
-      target: final
-    ports:
-    - 5000:5000
     labels:
-      kompose.service.type: nodeport
       kompose.image-pull-policy: "Always"
