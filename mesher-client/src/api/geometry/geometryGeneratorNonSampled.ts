@@ -1,11 +1,16 @@
 
 import axios from "axios";
 
-const url:string = 'http://198.51.118.26:80/api/GeometryNonSampled';
+
+const url:string = 'http://192.168.49.2:80/api/GeometryNonSampled';
 
 export const getGeometryVector = async (): Promise<number[] | undefined> => {
     try{
-        const res =  (await axios.get<number[]>(url + '/GenerateVertices')).data;
+        const res =  (await axios.get<number[]>(url + '/GenerateVertices', {
+            headers: {
+                'Host': 'www.mesher.com'
+            }
+        })).data;
         console.log(res);
         return res;
     }
