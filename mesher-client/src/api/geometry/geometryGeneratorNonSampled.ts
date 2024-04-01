@@ -2,7 +2,7 @@
 import axios from "axios";
 
 
-const url:string = 'http://192.168.49.2:80/api/GeometryNonSampled';
+const url:string = 'http://envoy-default-eg-e41e7b31.gateway-envoy-system.svc.cluster.local/api/GeometryNonSampled';
 
 export const getGeometryVector = async (): Promise<number[] | undefined> => {
     try{
