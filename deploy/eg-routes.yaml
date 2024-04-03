@@ -5,8 +5,6 @@ metadata:
 spec:
   parentRefs:
     - name: eg
-  hostnames:
-    - "www.mesher.com"
   rules:
     - backendRefs:
         - name: geometrygeneratornonsampled
