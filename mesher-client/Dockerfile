@@ -1,26 +1,24 @@
-# syntax=docker/dockerfile:1
 
-ARG NODE_VERSION=18.19.0
+FROM node:lts-alpine AS build
+ARG NODE_ENV
 
-################################################################################
-# Use node image for base image for all stages.
-FROM node:${NODE_VERSION}-alpine as base
+ENV NODE_ENV $NODE_ENV
 
-# Set working directory for all build stages.
-WORKDIR /usr/src/client
-EXPOSE 3000 
-# Development environment.
-FROM base as final
-LABEL org.opencontainers.image.source=https://github.com/TsvetislavRangelov/mesher
-LABEL org.opencontainers.image.description="Mesher Web Client"
+WORKDIR /app
+
+COPY package*.json ./
+
+
+RUN npm ci
 
 COPY . .
 
-RUN apk add curl
+RUN npm run build
 
-RUN --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=package-lock.json,target=package-lock.json \
-    --mount=type=cache,target=/root/.npm \
-    npm ci --include=dev
-    
-CMD npm run dev
+FROM nginx:stable-alpine AS final
+LABEL org.opencontainers.image.source=https://github.com/TsvetislavRangelov/mesher
+LABEL org.opencontainers.image.description="Mesher Web Client"
+
+COPY --from=build /app/dist /usr/share/nginx/html
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf

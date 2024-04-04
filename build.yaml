@@ -5,8 +5,11 @@ services:
     build:
       context: ./mesher-client
       target: final
+      dockerfile: Dockerfile.local
+    environment:
+      NODE_ENV: development
     ports:
-      - 3000:3000
+      - 3000:80
     labels:
       kompose.service.type: nodeport
       kompose.image-pull-policy: "Always"

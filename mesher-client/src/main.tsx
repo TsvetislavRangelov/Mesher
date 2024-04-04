@@ -11,6 +11,7 @@ const httpClient = new QueryClient({
   }
 });
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={httpClient}>
   <App />

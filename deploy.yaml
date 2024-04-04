@@ -6,7 +6,7 @@ services:
       context: ./mesher-client
       target: final
     ports:
-      - 3000:3000
+      - 3000:80
     labels:
       kompose.service.type: nodeport
       kompose.service.nodeport.port: 30000
