@@ -13,22 +13,22 @@ services:
     labels:
       kompose.service.type: nodeport
       kompose.image-pull-policy: "Always"
-  geometryGeneratorNonSampled:
-    container_name: geometrygeneratornonsampled
-    image: geometrygeneratornonsampled:${TAG:-latest}
-    build:
-      context: ./Services/GeometryGeneratorNonSampled
-      target: final
-    ports:
-      - 8080:8080
-  apigw:
-    container_name: apigw
-    image: apigw:${TAG:-latest}
-    build:
-      context: ./Services/ApiGateway
-      target: final
-    ports:
-    - 5000:5000
-    labels:
-      kompose.service.type: nodeport
-      kompose.image-pull-policy: "Always"
+  # geometryGeneratorNonSampled:
+  #   container_name: geometrygeneratornonsampled
+  #   image: geometrygeneratornonsampled:${TAG:-latest}
+  #   build:
+  #     context: ./Services/GeometryGeneratorNonSampled
+  #     target: final
+  #   ports:
+  #     - 8080:8080
+  # apigw:
+  #   container_name: apigw
+  #   image: apigw:${TAG:-latest}
+  #   build:
+  #     context: ./Services/ApiGateway
+  #     target: final
+  #   ports:
+  #   - 5000:5000
+  #   labels:
+  #     kompose.service.type: nodeport
+  #     kompose.image-pull-policy: "Always"
