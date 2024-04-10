@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const url:string = `${import.meta.env.VITE_LOCAL_GW_ROOT_URL}`;
+const url:string = `${import.meta.env.GW_ROOT_URL}`;
 
 export const getGeometryVector = async (): Promise<number[] | undefined> => {
     try{
