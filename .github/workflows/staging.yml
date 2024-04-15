@@ -13,4 +13,4 @@ jobs:
           sudo /sbin/modprobe tun
           sudo apt-get install openconnect
           printf 'Netlab Fontys ICT\n${{secrets.NETLAB_USER}}\n${{secrets.NETLAB_PASS}}\n' | sudo openconnect vpnnetlab.fhict.nl
-          ping 192.168.144.2
+          curl -v --header "Host: mesher.api" http://192.168.144.2/api/GeometryNonSampled/GenerateVertices
