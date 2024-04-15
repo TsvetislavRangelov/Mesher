@@ -12,5 +12,5 @@ jobs:
           sudo apt-get update
           sudo /sbin/modprobe tun
           sudo apt-get install openconnect
-          printf '0\${{secrets.NETLAB_USER}}\${{secrets.NETLAB_PASS}}\ny\n' | sudo /opt/cisco/anyconnect/bin/vpn -S connect vpnnetlab.fhict.nl sudo openconnect vpnnetlab.fhict.nl
+          printf '0\${{secrets.NETLAB_USER}}\${{secrets.NETLAB_PASS}}\ny\n' | sudo /opt/cisco/anyconnect/bin/vpn -s connect vpnnetlab.fhict.nl
           ping 192.168.144.2
