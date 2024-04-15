@@ -13,6 +13,9 @@ jobs:
           sudo /sbin/modprobe tun
           sudo apt-get install openconnect
           printf 'Netlab Fontys ICT\n${{secrets.NETLAB_USER}}\n${{secrets.NETLAB_PASS}}\n' | sudo openconnect vpnnetlab.fhict.nl -b
+      - name: Map host address
+        run: |
+          echo "192.168.144.2 mesher.api" | sudo tee -a /etc/hosts
       - name: Install dependencies
         run: | 
           sudo gpg -k
