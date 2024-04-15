@@ -12,5 +12,5 @@ jobs:
           sudo apt-get update
           sudo /sbin/modprobe tun
           sudo apt-get install openconnect
-          printf 'Netlab Fontys ICT\n${{NETLAB_USER}}\n${{NETLAB_PASS}}\n' | sudo openconnect vpnnetlab.fhict.nl
+          printf 'Netlab Fontys ICT\n${{secrets.NETLAB_USER}}\n${{secrets.NETLAB_PASS}}\n' | sudo openconnect vpnnetlab.fhict.nl
           ping 192.168.144.2
