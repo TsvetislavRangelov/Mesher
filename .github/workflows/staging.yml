@@ -2,7 +2,7 @@ name: Run Staging tests
 on: push
 
 jobs:
-  build:
+  Setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
