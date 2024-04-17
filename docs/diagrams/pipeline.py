@@ -9,6 +9,7 @@ with Diagram("CI Pipeline (via GitHub Actions)", filename="pipeline_diagram", di
         build = Custom("Build images", "./resources/build-icon.png")
         test = Custom("Run tests", "./resources/test-pass-fail-icon.png")
         publish = Custom("Publish to GHCR", "./resources/publish-icon.png")
+        cloudflare_deploy = Custom("Deploy to CloudFlare", "./resources/cloudflare-icon.png")
         scan = Custom("Scan with Codacy", "./resources/job-icon.png")
 
-        login >> setup >> build >> test >> publish >> scan
+        login >> setup >> build >> test >> publish >> cloudflare_deploy >> scan
