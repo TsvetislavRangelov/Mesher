@@ -11,7 +11,7 @@ const Renderer = (props: Props) => {
     <Canvas>
       <Suspense fallback={false}>
       {props.mesh}
-      <OrbitControls autoRotate></OrbitControls>
+      <OrbitControls autoRotate/>
       <Stats />
       <Environment files={'/rustig_koppie_puresky_1k.hdr'} background/>
       </Suspense>

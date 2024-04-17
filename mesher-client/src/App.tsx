@@ -1,9 +1,16 @@
-import './App.css';
 import Mesh from './components/Mesh';
 import Renderer from './components/Renderer';
 import { getGeometryVector } from './api/geometry/geometryGeneratorNonSampled';
 import { useQuery } from '@tanstack/react-query';
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+
+import './App.css';
+import Navbar from './components/Navbar';
 function App() {
   const {isPending, error, data } = useQuery({
     queryKey: ['geometry'],
@@ -11,15 +18,13 @@ function App() {
   })
 
   if(isPending) return <div>Loading...</div>
-  if(error) return <div>An unexpected error occured: <br />
-    <h1>{error.message}</h1>
-    </div>
 
   return (
-   <Renderer mesh={
-    <Mesh geometry={data!}></Mesh>
-   }>
-   </Renderer>
+    <><Navbar />
+    {data ? <Renderer mesh={<Mesh geometry={data!}></Mesh>}>
+    </Renderer> : <h1>{error?.message}</h1>}
+    </>
+
   );
 }
 
