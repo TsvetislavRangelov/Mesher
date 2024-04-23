@@ -11,6 +11,6 @@ export const getGeometryVector = async (): Promise<number[] | undefined> => {
         return res;
     }
     catch(err){
-        console.error(err);
+        console.error("Services are not running. Failure to get geometry data.");
     }
 }

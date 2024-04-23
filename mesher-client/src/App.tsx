@@ -11,33 +11,30 @@ import Navbar from './components/Navbar';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect } from 'react';
 function App() {
-  const  {user, getAccessTokenSilently, getAccessTokenWithPopup} = useAuth0();
+  const  {user, isAuthenticated, getAccessTokenSilently} = useAuth0();
   const {isPending, error, data } = useQuery({
     queryKey: ['geometry'],
     queryFn: getGeometryVector,
   })
   useEffect(() => {
     const getToken = async () => {
-      let token;
-      try{
-       token = await getAccessTokenSilently({
-          authorizationParams: {
-            audience: 'https://mesher.eu.auth0.com/api/v2/',
-            scope: 'read:current_user'
-          }
-        });
-      }
-      catch(error: any){
-        if(error.error === 'login_required'){
-          token = await getAccessTokenWithPopup();
+      if(isAuthenticated){
+        let token;
+        try{
+         token = await getAccessTokenSilently({
+            authorizationParams: {
+              audience: 'https://mesher.eu.auth0.com/api/v2/',
+              scope: 'read:current_user'
+            }
+          });
         }
-        else{
-          console.error(error);
+        catch(error: any){
+          console.log("Token failure: " + error);
         }
+        console.log("Successfully received token: " + token);
+        return token;
       }
-      console.log(user);
-      return token;
-    }
+      }
     getToken();
   }, [getAccessTokenSilently, user?.sub])
 

@@ -16,7 +16,7 @@ import Logo from '/Logo.svg';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Generator', 'About', 'Models'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
