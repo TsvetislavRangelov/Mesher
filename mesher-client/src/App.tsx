@@ -40,7 +40,7 @@ function App() {
 
   
   if(isPending) return <div>Loading...</div>
-  
+  console.log(isAuthenticated);
   return (
     <><Navbar />
     {data ? <Renderer mesh={<Mesh geometry={data!}></Mesh>}>
