@@ -6,8 +6,6 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import '../GeneratorNonSampled.css';
-import Navbar from './Navbar';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect } from 'react';
 function GeneratorNonSampled() {
@@ -40,12 +38,11 @@ function GeneratorNonSampled() {
 
   
   if(isPending) return <div>Loading...</div>
-  console.log(isAuthenticated);
   return (
-    <><Navbar />
+    <div>
     {data ? <Renderer mesh={<Mesh geometry={data!}></Mesh>}>
     </Renderer> : <h1>{error?.message}</h1>}
-    </>
+    </div>
 
   );
 }

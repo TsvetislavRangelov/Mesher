@@ -5,8 +5,6 @@ export default function Landing() {
   return (
     <div className="App">
       <Renderer mesh={<Model />}>
-        
-
       </Renderer>
     </div>
   );

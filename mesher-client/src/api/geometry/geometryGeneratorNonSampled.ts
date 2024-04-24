@@ -6,7 +6,7 @@ const url:string = `${import.meta.env.VITE_GW_ROOT_URL}`;
 console.log(url);
 export const getGeometryVector = async (): Promise<number[] | undefined> => {
     try{
-        const res =  (await axios.get<number[]>(url + '/GeometryNonSampled/GenerateVerticeswadawdadw')).data;
+        const res =  (await axios.get<number[]>(url + '/GeometryNonSampled/GenerateVertices')).data;
         console.log(res);
         return res;
     }

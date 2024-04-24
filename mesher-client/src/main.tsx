@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import ErrorPage from './routes/ErrorPage.tsx';
 import Root from './routes/Root.tsx';
+import GeneratorNonSampled from './components/GeneratorNonSampled.tsx';
+import Landing from './routes/Landing.tsx';
 
 const httpClient = new QueryClient({
   defaultOptions: {
@@ -21,7 +23,17 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Landing /> ,
+      },
+      {
+        path: "generator",
+        element: <GeneratorNonSampled />
+      }
+    ]
   },
 ]);
 
