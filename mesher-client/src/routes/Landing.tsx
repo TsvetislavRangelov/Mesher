@@ -1,4 +1,3 @@
-import { Plane } from '@react-three/drei';
 import {Model} from '../components/Model'
 import Renderer from '../components/Renderer';
 
