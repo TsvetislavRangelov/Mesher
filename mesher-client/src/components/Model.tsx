@@ -6,93 +6,51 @@ import { useGLTF } from '@react-three/drei'
 import { Mesh } from 'three'
 
 export function Model(props: any) {
-  const { nodes, materials } = useGLTF('/flightHelmet.glb')
+  const { nodes, materials } = useGLTF('/compressed.glb')
   return (
-    <group {...props} dispose={null}>
-      <group rotation={[-Math.PI, 0, -Math.PI]} position={[0, -2, 0]} scale={[0.1, 0.1, 0.1]}>
-        <group scale={580}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Headphones_low as Mesh).geometry}
-            material={materials.GlassPlasticMat}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Lenses_low as Mesh).geometry}
-            material={materials.LensesMat}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.MaskPad_low as Mesh).geometry}
-            material={materials.GlassPlasticMat}
-          />
-        </group>
-        <group scale={580}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Leather1_low as Mesh).geometry}
-            material={materials.LeatherPartsMat}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Leather2_low as Mesh).geometry}
-            material={materials.LeatherPartsMat}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Leather3_low as Mesh).geometry}
-            material={materials.LeatherPartsMat}
-          />
-        </group>
-        <group scale={580}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Metal1_low as Mesh).geometry}
-            material={materials.MetalPartsMat}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Metal2_low as Mesh).geometry}
-            material={materials.MetalPartsMat}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Metal3_low as Mesh).geometry}
-            material={materials.MetalPartsMat}
-          />
-        </group>
-        <group scale={580}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Plastic1_low as Mesh).geometry}
-            material={materials.RubberWoodMat}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Plastic2_low as Mesh).geometry}
-            material={materials.RubberWoodMat}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Plastic3_low as Mesh).geometry}
-            material={materials.RubberWoodMat}
-          />
-        </group>
-      </group>
+    <group {...props} dispose={null}  position={[0, -2, 0]} scale={[0.1, 0.1, 0.1]}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes.Headphones_low as Mesh).geometry}
+        material={materials.GlassPlasticMat}
+        rotation={[-Math.PI, 0, -Math.PI]}
+        scale={580}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes.Lenses_low as Mesh).geometry}
+        material={materials.LensesMat}
+        rotation={[-Math.PI, 0, -Math.PI]}
+        scale={580}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes.Leather1_low as Mesh).geometry}
+        material={materials.LeatherPartsMat}
+        rotation={[-Math.PI, 0, -Math.PI]}
+        scale={580}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes.Metal1_low as Mesh).geometry}
+        material={materials.MetalPartsMat}
+        rotation={[-Math.PI, 0, -Math.PI]}
+        scale={580}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={(nodes.Plastic1_low as Mesh).geometry}
+        material={materials.RubberWoodMat}
+        rotation={[-Math.PI, 0, -Math.PI]}
+        scale={580}
+      />
     </group>
   )
 }
 
-useGLTF.preload('/flightHelmet.glb')
+useGLTF.preload('/compressed.glb')
