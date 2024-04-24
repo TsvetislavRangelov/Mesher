@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
 import './index.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Auth0Provider } from '@auth0/auth0-react';
@@ -7,6 +6,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import ErrorPage from './routes/ErrorPage.tsx';
+import Root from './routes/Root.tsx';
 
 const httpClient = new QueryClient({
   defaultOptions: {
@@ -19,7 +20,8 @@ const httpClient = new QueryClient({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Root />,
+    errorElement: <ErrorPage />
   },
 ]);
 

@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber"
 import { Environment, OrbitControls, Stats } from "@react-three/drei";
 import { Suspense } from "react";
+import '../renderer-styles.css';
 
 type Props = {
   mesh: React.ReactNode;

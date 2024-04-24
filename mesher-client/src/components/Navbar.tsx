@@ -15,6 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Logo from '/Logo.svg';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
+import { Link } from 'react-router-dom';
 
 const pages = ['Generator', 'About', 'Models'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -106,7 +107,7 @@ function Navbar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <Link style={{textDecoration: 'none', color: 'white' }} to={`${page.toLowerCase()}`}>{page}</Link>
               </Button>
             ))}
           </Box>
