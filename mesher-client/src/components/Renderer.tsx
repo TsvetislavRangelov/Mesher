@@ -5,6 +5,7 @@ import '../renderer-styles.css';
 
 type Props = {
   mesh: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const Renderer = (props: Props) => {
@@ -12,7 +13,7 @@ const Renderer = (props: Props) => {
     <Canvas>
       <Suspense fallback={false}>
       {props.mesh}
-      <OrbitControls autoRotate/>
+      <OrbitControls />
       <Stats />
       <Environment files={'/rustig_koppie_puresky_1k.hdr'} background/>
       </Suspense>
