@@ -25,6 +25,7 @@ jobs:
         run: |
           sudo apt-get update && \
           sudo apt-get install -y dotnet-sdk-8.0
+          export CODACY_PROJECT_TOKEN=${{CODACY_API_TOKEN}}
           bash ${{matrix.script}}
           bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ${{matrix.output-file}}
           
