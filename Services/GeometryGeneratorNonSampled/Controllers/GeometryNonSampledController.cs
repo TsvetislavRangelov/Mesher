@@ -1,4 +1,3 @@
-using System.Numerics;
 using GeometryGeneratorNonSampled.DTO;
 using GeometryGeneratorNonSampled.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;

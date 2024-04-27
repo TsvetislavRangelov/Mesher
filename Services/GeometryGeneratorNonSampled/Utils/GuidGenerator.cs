@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace GeometryGeneratorNonSampled.Utils;
 
 /// <summary>
@@ -14,7 +16,7 @@ public static class GuidGenerator
         string guid = Guid.NewGuid().ToString();
         string firstHalfGuid = guid[..(guid.Length / 2)];
         string secondHalfGUid = guid.Substring(guid.Length / 2, guid.Length / 2 - 1);
-        var secondHalfToUpper = secondHalfGUid.ToUpper();
+        string secondHalfToUpper = secondHalfGUid.ToUpperInvariant();
         string combined = firstHalfGuid + secondHalfToUpper;
         return firstHalfGuid + secondHalfToUpper;
     }
