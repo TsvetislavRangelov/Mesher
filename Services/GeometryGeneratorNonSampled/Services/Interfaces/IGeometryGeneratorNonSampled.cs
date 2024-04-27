@@ -1,4 +1,3 @@
-using System.Numerics;
 using GeometryGeneratorNonSampled.Domain;
 
 namespace GeometryGeneratorNonSampled.Services.Interfaces;
@@ -12,5 +11,5 @@ public interface IGeometryGeneratorNonSampled
     /// Procedurally generates vertices.
     /// </summary>
     /// <returns>A <see cref="Vector3Model"/> representing a point in 3D space (vertex).</returns>
-    public float[] GenerateVertices(int? vertexCount);
+    public GeometryModel GenerateVertices(int? vertexCount);
 }

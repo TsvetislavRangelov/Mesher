@@ -1,4 +1,5 @@
 using System.Numerics;
+using GeometryGeneratorNonSampled.DTO;
 using GeometryGeneratorNonSampled.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,8 @@ public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator
     [HttpGet]
     public IActionResult GenerateVertices()
     {
-        return Ok(generator.GenerateVertices(null));
+        var model = generator.GenerateVertices(100);
+        Console.WriteLine(model);
+        return Ok(new GeometryModelDto(model.Id, model.VertexData));
     }
 }

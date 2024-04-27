@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import { DoubleSide, TextureLoader } from 'three';
 
 interface MeshProps {
-    geometry: number[];
+    id: string;
+    geometry: Array<number>;
     rotationX?: number;
     rotationY?: number;
     rotationZ?: number;

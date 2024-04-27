@@ -40,7 +40,7 @@ function GeneratorNonSampled() {
   if(isPending) return <div>Loading...</div>
   return (
     <div>
-    {data ? <Renderer mesh={<Mesh geometry={data!}></Mesh>}>
+    {data ? <Renderer mesh={<Mesh geometry={data.vertexData} id={data.id}></Mesh>}>
     </Renderer> : <h1>{error?.message}</h1>}
     </div>
 

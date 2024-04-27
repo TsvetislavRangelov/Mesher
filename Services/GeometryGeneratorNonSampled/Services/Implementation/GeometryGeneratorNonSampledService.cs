@@ -1,4 +1,6 @@
+using GeometryGeneratorNonSampled.Domain;
 using GeometryGeneratorNonSampled.Services.Interfaces;
+using GeometryGeneratorNonSampled.Utils;
 
 namespace GeometryGeneratorNonSampled.Services.Implementation;
 /// <summary>
@@ -7,7 +9,7 @@ namespace GeometryGeneratorNonSampled.Services.Implementation;
 public class GeometryGeneratorNonSampledService : IGeometryGeneratorNonSampled
 {
     private readonly Random _rand = new();
-    public float[] GenerateVertices(int? vertexCount)
+    public GeometryModel GenerateVertices(int? vertexCount)
     {
         if (vertexCount == 0)
         {
@@ -24,6 +26,7 @@ public class GeometryGeneratorNonSampledService : IGeometryGeneratorNonSampled
             }
             vertices[i] = floatProduct;
         }
-        return vertices;
+        
+        return new GeometryModel(GuidGenerator.GenerateUid(), vertices);
     }
 }
