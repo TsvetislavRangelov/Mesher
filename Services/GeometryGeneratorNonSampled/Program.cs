@@ -1,7 +1,7 @@
 using GeometryGeneratorNonSampled.Services.Implementation;
 using GeometryGeneratorNonSampled.Services.Interfaces;
 
-var allowSpecificOrigins = "dev";
+const string allowSpecificOrigins = "dev";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
