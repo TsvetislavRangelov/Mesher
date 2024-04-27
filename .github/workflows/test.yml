@@ -14,7 +14,8 @@ jobs:
         matrix:
             include:
             - test-type: Unit
-            - script: ./run-unit.sh
+              script: ./run-unit.sh
+              output-file: /Services/Tests/Unit/coverage.xml
     name: Run Tests (${{matrix.test-type}})
     steps:
       - name: Checkout
@@ -25,5 +26,6 @@ jobs:
           sudo apt-get update && \
           sudo apt-get install -y dotnet-sdk-8.0
           bash ${{matrix.script}}
+          bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ${{coverage.xml}}
           
           
