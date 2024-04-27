@@ -18,7 +18,7 @@ jobs:
                 image: ghcr.io/TsvetislavRangelov/mesher-geometry-generator-nonsampled
                 working-directory: ./Services/GeometryGeneratorNonSampled
                 service-name: GeometryGeneratorNonSampled
-  name: Build and push container ${{matrix.service-name}}
+    name: Build and push container ${{matrix.service-name}}
     permissions:
       contents: read
       packages: write
