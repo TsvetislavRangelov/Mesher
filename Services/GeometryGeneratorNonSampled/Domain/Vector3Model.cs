@@ -40,8 +40,8 @@ public class Vector3Model
             }
         }
     }
-    
-    public Vector3Model(){}
+
+    public Vector3Model() { }
 
     /// <summary>
     /// Ctor
@@ -74,7 +74,7 @@ public class Vector3Model
     {
         return new Vector3(X, Y, Z);
     }
-    
+
     /// <summary>
     /// Transforms to <see langword="float[]"/>.
     /// </summary>
