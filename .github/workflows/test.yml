@@ -15,7 +15,7 @@ jobs:
             include:
             - test-type: Unit
               script: ./run-unit.sh
-              output-file: /Services/Tests/Unit/coverage.xml
+              output-file: ./Services/Tests/Unit/coverage.xml
     name: Run Tests (${{matrix.test-type}})
     steps:
       - name: Checkout
