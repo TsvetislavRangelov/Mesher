@@ -2,4 +2,4 @@
 
 echo "Running unit tests."
 
-dotnet test Services/Tests/Unit
+dotnet test /p:AltCover=true Services/Tests/Unit
