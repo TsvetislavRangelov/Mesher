@@ -1,4 +1,7 @@
 # Mesher
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/89044ded98aa448ab76b17f90f812f6d)](https://app.codacy.com/gh/TsvetislavRangelov/mesher?utm_source=github.com&utm_medium=referral&utm_content=TsvetislavRangelov/mesher&utm_campaign=Badge_Grade)
+
 Mesher is a service used to procedurally generate 3D models, which can be used as game level assets in Unreal Engine or Unity.
 
 ## Build
