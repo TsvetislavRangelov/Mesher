@@ -5,7 +5,9 @@
 Mesher is a service used to procedurally generate 3D models, which can be used as game level assets in Unreal Engine or Unity.
 
 ## Build
-Mesher is completely containerized using [Docker](https://www.docker.com/).
+Mesher is implemented via a microservice architecture. The design is native to Kubernetes and a k8s cluster is required in order to deploy the services.
+
+The web client is static and can be built independently of the backend services.
 ```bash
 # clone the repo
 git clone https://github.com/TsvetislavRangelov/mesher
@@ -13,8 +15,14 @@ git clone https://github.com/TsvetislavRangelov/mesher
 # cd into the directory.
 cd Mesher
 
-# Execute the build script (Linux).
-./build.sh
+# build and run the client (either with dev or prod configuration).
+npm run dev # development
+npm run production # production
+
+# Deploy to a kubernetes cluster of your choosing (example uses docker-desktop kubernetes).
+kubectl config use-context docker-desktop
+cd /deploy/local
+./deploy-local-kubectl.sh
 ```
 This will call docker compose by passing in the `build.yaml` file. It will build all services that are defined there. 
 
