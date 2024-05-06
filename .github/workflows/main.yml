@@ -19,15 +19,15 @@ jobs:
                 working-directory: ./Services/GeometryGeneratorNonSampled
                 service-name: GeometryGeneratorNonSampled
               - dockerfile: ./Services/GeneratorHistory/Dockerfile
-                image: ghcr.io/TsvetislavRangelov/generator-history
+                image: ghcr.io/TsvetislavRangelov/mesher-generator-history
                 working-directory: ./Services/GeneratorHistory
                 service-name: GeneratorHistory
               - dockerfile: ./Services/ModelCollection/Dockerfile
-                image: ghcr.io/TsvetislavRangelov/model-collection
+                image: ghcr.io/TsvetislavRangelov/mesher-model-collection
                 working-directory: ./Services/ModelCollection
                 service-name: ModelCollection
               - dockerfile: ./Services/Transactions/Dockerfile
-                image: ghcr.io/TsvetislavRangelov/transactions
+                image: ghcr.io/TsvetislavRangelov/mesher-transactions
                 working-directory: ./Services/Transactions
                 service-name: Transactions
     name: Build and push container ${{matrix.service-name}}
