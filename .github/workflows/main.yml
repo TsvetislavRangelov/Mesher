@@ -27,7 +27,7 @@ jobs:
                 working-directory: ./Services/ModelCollection
                 service-name: ModelCollection
               - dockerfile: ./Services/Transactions/Dockerfile
-                image: ghcr.io//TsvetislavRangelov/transactions
+                image: ghcr.io/TsvetislavRangelov/transactions
                 working-directory: ./Services/Transactions
                 service-name: Transactions
     name: Build and push container ${{matrix.service-name}}
