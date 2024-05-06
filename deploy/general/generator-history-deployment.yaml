@@ -5,26 +5,26 @@ metadata:
     kompose.cmd: kompose convert -f compose.yaml
     kompose.version: 1.32.0 (765fde254)
   labels:
-    io.kompose.service: transactions
-  name: transactions
+    io.kompose.service: generator-history
+  name: generator-history
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: transactions
+      io.kompose.service: generator-history
   template:
     metadata:
       annotations:
         kompose.cmd: kompose convert -f compose.yaml
         kompose.version: 1.32.0 (765fde254)
       labels:
-        io.kompose.network/transactions-default: "true"
-        io.kompose.service: transactions
+        io.kompose.network/generatorhistory-default: "true"
+        io.kompose.service: generator-history
     spec:
       containers:
-        - image: ghcr.io/tsvetislavrangelov/transactions:master
+        - image: ghcr.io/tsvetislavrangelov/mesher-generator-history:master
           imagePullPolicy: Always
-          name: transactions
+          name: generator-history
           ports:
             - containerPort: 8080
       restartPolicy: Always

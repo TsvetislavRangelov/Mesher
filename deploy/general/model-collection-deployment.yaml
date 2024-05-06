@@ -22,7 +22,7 @@ spec:
         io.kompose.service: model-collection
     spec:
       containers:
-        - image: ghcr.io/tsvetislavrangelov/model-collection:master
+        - image: ghcr.io/tsvetislavrangelov/mesher-model-collection:master
           imagePullPolicy: Always
           name: model-collection
           ports:

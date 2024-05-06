@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: generator-history-service
+spec:
+  selector:
+    app: generator-history
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: generator-history-set
+spec:
+  selector:
+    matchLabels:
+      app: generator-history
+  serviceName: "generator-history-service"
+  replicas: 1
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: generator-history
+    spec:
+      terminationGracePeriodSeconds: 10
+      # initContainers:
+      #   - name: db-init    # using root, change permissions to not use root in main container
+      #     image: postgres
+      #     command:
+      #       - 'sh'
+      #       - '-c'
+      #       - |
+      #         chown -R 999:999 /var/lib/postgresql/data
+      #     volumeMounts:
+      #       - name:  generator-history
+      #         mountPath: /var/lib/postgresql/data
+      containers:
+        - name: generator-history-statefulset
+          image: postgres
+          # command:
+          #   - 'sh'
+          #   - '-c'
+          #   - |
+          #     chown -R 999:999 /var/lib/postgresql/data
+          ports:
+          - containerPort: 5432
+          env:
+          - name: POSTGRES_USERNAME
+            value: "POSTGRES"
+          - name: POSTGRES_PASSWORD
+            value: "POSTGRES"
+          - name: POSTGRES_DB
+            value: "history"
+          securityContext:
+            allowPrivilegeEscalation: false
+            # runAsUser: 999
+            # runAsGroup: 999    
+        # This is WORKING        
+          volumeMounts:
+             - mountPath: "/var/lib/postgresql/data"
+               name: storage
+      volumes:
+         - name: storage
+           persistentVolumeClaim:
+            claimName: generator-history-pvc
