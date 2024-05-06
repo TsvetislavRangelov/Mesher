@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f compose.yaml
+    kompose.version: 1.32.0 (765fde254)
+  labels:
+    io.kompose.service: transactions
+  name: transactions
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: transactions
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f compose.yaml
+        kompose.version: 1.32.0 (765fde254)
+      labels:
+        io.kompose.network/transactions-default: "true"
+        io.kompose.service: transactions
+    spec:
+      containers:
+        - image: ghcr.io/tsvetislavrangelov/transactions:master
+          imagePullPolicy: Always
+          name: transactions
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always

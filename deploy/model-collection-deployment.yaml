@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f compose.yaml
+    kompose.version: 1.32.0 (765fde254)
+  labels:
+    io.kompose.service: model-collection
+  name: model-collection
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: model-collection
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f compose.yaml
+        kompose.version: 1.32.0 (765fde254)
+      labels:
+        io.kompose.network/modelcollection-default: "true"
+        io.kompose.service: model-collection
+    spec:
+      containers:
+        - image: ghcr.io/tsvetislavrangelov/model-collection:master
+          imagePullPolicy: Always
+          name: model-collection
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always
