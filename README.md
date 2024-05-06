@@ -24,7 +24,7 @@ kubectl config use-context docker-desktop
 cd /deploy/local
 ./deploy-local-kubectl.sh
 ```
-This will call docker compose by passing in the `build.yaml` file. It will build all services that are defined there. 
+The script that is executed will deploy and expose an Envoy API Gateway, with the external IP being the loopback address. Afterwards, it will deploy all the microservices present in the `/Services` folder. 
 
 ## Structure
 This is the monorepo for Mesher. It contains all services related to mesher, both client and server. The client-side can be found under `mesher-client` and the backend services can be found under `Services`. The server-side is written in .NET 8.0 and the client is made with React TypeScript.
