@@ -20,14 +20,6 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan 192.168.144.15 >> ~/.ssh/known_hosts
-      - name: Install dependencies
+      - name: Run Load Tests
         run: |
-          ssh -o StrictHostKeyChecking=no student@192.168.144.15 "echo IT WORKS"
-          echo "192.168.144.2 mesher.api" | sudo tee -a /etc/hosts
-          sudo gpg -k
-          sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
-          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
-          sudo apt-get update
-          sudo apt-get install k6
-          cd mesher-client/tests
-          k6 run geometry-generator-non-sampled-load-test.spec.ts
+          ssh -o StrictHostKeyChecking=no student@192.168.144.15 "./execute-load-tests.sh"
