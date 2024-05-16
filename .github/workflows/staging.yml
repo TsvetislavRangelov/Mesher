@@ -21,7 +21,8 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan 192.168.144.15 >> ~/.ssh/known_hosts
       - name: Install dependencies
-        run: | 
+        run: |
+          cd .ssh/
           ssh -i ${{secrets.SSH_KEY}} student@192.168.144.15
           echo "192.168.144.2 mesher.api" | sudo tee -a /etc/hosts
           sudo gpg -k
