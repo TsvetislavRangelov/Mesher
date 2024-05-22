@@ -12,9 +12,9 @@ WORKDIR /out
 
 COPY --from=build /out .
 USER $APP_UID
-export OTEL_SERVICE_NAME=geometrygeneratornonsampled
-export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=dev,service.namespace=default,service.version=1,service.instance.id=1"
-export OTEL_EXPORTER_ENDPOINT="http://grafana-k8s-monitoring-grafana-agent.monitoring.svc.cluster.local:4318"
+RUN export OTEL_SERVICE_NAME=geometrygeneratornonsampled && \
+export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=dev,service.namespace=default,service.version=1,service.instance.id=1" && \
+export OTEL_EXPORTER_ENDPOINT="http://grafana-k8s-monitoring-grafana-agent.monitoring.svc.cluster.local:4318" && \
 export OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"
 
 ENTRYPOINT ["dotnet", "GeometryGeneratorNonSampled.dll"]
