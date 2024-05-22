@@ -22,7 +22,6 @@ public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator
     public IActionResult GenerateVertices()
     {
         var model = generator.GenerateVertices(100);
-        Console.WriteLine(model);
         return Ok(new GeometryModelDto(model.Id, model.VertexData));
     }
 }
