@@ -15,13 +15,13 @@ export const options = {
 
       stages: [
 
-        { duration: '30s', target: 300 },
+        { duration: '60s', target: 500 },
 
         { duration: '30s', target: 0 },
 
       ],
 
-      gracefulRampDown: '100s',
+      gracefulRampDown: '15s',
 
     },
 
