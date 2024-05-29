@@ -1,3 +1,4 @@
+using GeneratorHistory.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeneratorHistory.Controllers;
@@ -24,8 +25,9 @@ public class ModelController : ControllerBase
     /// </summary>
     /// <returns><see cref="IActionResult"/>.</returns>
     [HttpPost]
-    public IActionResult SaveModel([FromBodyAttribute] float[] vertexData, [FromBodyAttribute] string modelId)
+    public IActionResult SaveModel([FromBody] SaveModelDTO model)
     {
+        Console.WriteLine(model);
         
         return Created();
     }

@@ -65,4 +65,4 @@ metadata:
   name: mssql-secret
 type: Opaque
 data:
-  SA_PASSWORD: "c2VjdXJlUGFzc3dvcmQ="  # This is 'securePassword' base64 encoded
+  SA_PASSWORD: "czNjdXJlUGFzc3dvcmQhCg=="  # This is 'securePassword' base64 encoded

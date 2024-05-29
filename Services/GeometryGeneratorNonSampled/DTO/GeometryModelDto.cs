@@ -1,5 +1,3 @@
-using GeometryGeneratorNonSampled.Domain;
-
 namespace GeometryGeneratorNonSampled.DTO;
 
 /// <summary>
