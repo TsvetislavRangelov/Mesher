@@ -44,8 +44,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <Auth0Provider 
   domain={domain} cacheLocation='localstorage' useRefreshTokens={true} clientId={clientId} authorizationParams={{
     redirect_uri: `${import.meta.env.VITE_AUTH0_REDIRECT_URI}`,
-    audience: "https://mesher.eu.auth0.com/api/v2/",
-    scope: "read:current_user update:current_user_metadata"
+    audience: "https://mesher.eu.auth0.com/api/v2/ https://mesher.eu.auth0.com/userinfo",
+    scope: "openid profile email read:current_user update:current_user_metadata"
   }}>
   <QueryClientProvider client={httpClient}>
   <RouterProvider router={router} />

@@ -16,11 +16,13 @@ import Logo from '/Logo.svg';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import { Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const pages = ['Generator', 'About', 'Models'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Logout', 'Collection', 'Model History'];
 
 function Navbar() {
+  const  { user, isAuthenticated } = useAuth0();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -112,37 +114,36 @@ function Navbar() {
             ))}
           </Box>
 
-          <LoginButton />
-          <LogoutButton />
-          <Box component="div" sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          {isAuthenticated ? <><LogoutButton /><Box component="div" sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, marginLeft: 2 }}>
+                  <Avatar alt="Remy Sharp" src={user?.picture} />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box></>: <LoginButton />}
+          
         </Toolbar>
       </Container>
     </AppBar>

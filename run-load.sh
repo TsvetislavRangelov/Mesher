@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd mesher/mesher-client/tests
+cd mesher-client/tests
 
 echo "Executing load tests with K6."
 
