@@ -11,7 +11,7 @@ function GeneratorNonSampled() {
   const  { user, isAuthenticated } = useAuth0();
   console.log(user);
   console.log(isAuthenticated);
-  const {isPending, error, data } = useQuery({
+  const {isPending, data } = useQuery({
     queryKey: ['geometry'],
     queryFn: getGeometryVector,
   })

@@ -1,6 +1,3 @@
-sing GeometryGeneratorNonSampled.Services.Implementation;
-using GeometryGeneratorNonSampled.Services.Interfaces;
-
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
@@ -24,8 +21,6 @@ builder.Services.AddCors(options =>
             policy.AllowAnyHeader();
         });
 });
-
-builder.Services.AddSingleton<IGeometryGeneratorNonSampled, GeometryGeneratorNonSampledService>();
 
 var app = builder.Build();
 
