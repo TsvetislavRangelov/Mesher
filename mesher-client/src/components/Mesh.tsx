@@ -12,11 +12,8 @@ interface MeshProps {
 }
 
 const Mesh = (props: MeshProps) => {
-    console.log(props.geometry);
     const [wireframe, setWireframe] = useState<boolean>(true);
-    const [geometry, setGeometry] = useState<number[]>([]);
     const mesh = useRef<THREE.Mesh>(null!);
-    console.log('RERENDERED')
     const colorMap = useLoader(TextureLoader, 'hay-texture-hay-bales-are-stacked-large-stacks-harvesting-agriculture_158676-1865.avif');
     var obj = {Wireframe: function() {setWireframe(!wireframe)}};
     useEffect(() => {
@@ -29,17 +26,13 @@ const Mesh = (props: MeshProps) => {
           gui.destroy()
         } 
       }, [wireframe]);
-    
-      useEffect(() => {
-        setGeometry(props.geometry);
-      }, [props.geometry])
 
-    const positions = new Float32Array(geometry.length);
-    const indices = new Uint16Array(geometry.length / 3);
+    const positions = new Float32Array(props.geometry.length);
+    const indices = new Uint16Array(props.geometry.length / 3);
 
 
-    for(let i = 0; i < geometry.length; i++){
-      positions[i] = geometry[i];
+    for(let i = 0; i < props.geometry.length; i++){
+      positions[i] = props.geometry[i];
       indices[i] = i;
     }
       

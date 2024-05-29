@@ -24,8 +24,9 @@ public class ModelController : ControllerBase
     /// </summary>
     /// <returns><see cref="IActionResult"/>.</returns>
     [HttpPost]
-    public IActionResult SaveModel()
+    public IActionResult SaveModel([FromBody] float[] vertexData, [FromBody] string modelId)
     {
+        
         return Created();
     }
 }
