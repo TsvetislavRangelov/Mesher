@@ -21,7 +21,6 @@ function GeneratorNonSampled() {
     onSuccess: () => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ['geometry'] });
-      console.log(data?.vertexData);
     },
   })
   
