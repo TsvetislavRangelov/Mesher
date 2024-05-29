@@ -14,7 +14,7 @@ interface MeshProps {
 const Mesh = (props: MeshProps) => {
     const [wireframe, setWireframe] = useState<boolean>(true);
     const mesh = useRef<THREE.Mesh>(null!);
-    //TODO: generate textures as well???? for now kept as default. could also load random from a pool of defaults.
+    console.log('RERENDERED')
     const colorMap = useLoader(TextureLoader, 'hay-texture-hay-bales-are-stacked-large-stacks-harvesting-agriculture_158676-1865.avif');
     var obj = {Wireframe: function() {setWireframe(!wireframe)}};
     useEffect(() => {
@@ -36,7 +36,6 @@ const Mesh = (props: MeshProps) => {
       positions[i] = props.geometry[i];
       indices[i] = i;
     }
-    console.log("INDICES: " + indices);
       
   
       

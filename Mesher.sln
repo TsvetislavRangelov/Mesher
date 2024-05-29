@@ -5,9 +5,13 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{58D56EBC-5E42-4CCE-A71F-EF088C9650C3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeometryGeneratorNonSampled", "Services\GeometryGeneratorNonSampled\GeometryGeneratorNonSampled.csproj", "{45A06F81-890F-43E8-8662-55D5285E7302}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit", "Services\Tests\Unit\Unit.csproj", "{6AFF2A66-FC04-4088-BC24-765EB89420B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorHistory", "Services\GeneratorHistory\GeneratorHistory.csproj", "{2A89C849-1D80-4738-AD28-CF3C72761C25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelCollection", "Services\ModelCollection\ModelCollection.csproj", "{66B14B4B-38D1-4637-BB13-AB3F7844A424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryGeneratorNonSampled", "Services\GeometryGeneratorNonSampled\GeometryGeneratorNonSampled.csproj", "{DD524A69-1737-4BC4-B932-CFEB249BBED3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,20 +19,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{45A06F81-890F-43E8-8662-55D5285E7302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45A06F81-890F-43E8-8662-55D5285E7302}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45A06F81-890F-43E8-8662-55D5285E7302}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45A06F81-890F-43E8-8662-55D5285E7302}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6AFF2A66-FC04-4088-BC24-765EB89420B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6AFF2A66-FC04-4088-BC24-765EB89420B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AFF2A66-FC04-4088-BC24-765EB89420B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AFF2A66-FC04-4088-BC24-765EB89420B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A89C849-1D80-4738-AD28-CF3C72761C25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A89C849-1D80-4738-AD28-CF3C72761C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A89C849-1D80-4738-AD28-CF3C72761C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A89C849-1D80-4738-AD28-CF3C72761C25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66B14B4B-38D1-4637-BB13-AB3F7844A424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B14B4B-38D1-4637-BB13-AB3F7844A424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B14B4B-38D1-4637-BB13-AB3F7844A424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B14B4B-38D1-4637-BB13-AB3F7844A424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD524A69-1737-4BC4-B932-CFEB249BBED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD524A69-1737-4BC4-B932-CFEB249BBED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD524A69-1737-4BC4-B932-CFEB249BBED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD524A69-1737-4BC4-B932-CFEB249BBED3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{45A06F81-890F-43E8-8662-55D5285E7302} = {58D56EBC-5E42-4CCE-A71F-EF088C9650C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9490A4AD-01DC-4AD3-A64B-B59361AE4F4A}
