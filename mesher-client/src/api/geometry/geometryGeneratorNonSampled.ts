@@ -13,11 +13,11 @@ export const generateVertices = async (): Promise<GeometryModel | undefined> => 
     }
 }
 
-export const saveModelToHistory = async (vertexData: number[], modelId: string): Promise<number | undefined> => {
+export const saveModelToHistory = async (model: GeometryModel): Promise<number | undefined> => {
     try{
         const res: number = (await axios.post<number>(url + '/Model/SaveModel', {
-            vertexData: vertexData,
-            modelId: modelId
+            vertexData: model.vertexData,
+            modelId: model.id
         })).data;
         return res;
     }
