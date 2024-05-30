@@ -3,6 +3,7 @@ using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 using Grafana.OpenTelemetry;
+using Microsoft.EntityFrameworkCore;
 
 const string allowSpecificOrigins = "dev";
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,11 @@ builder.Services.AddCors(options =>
             policy.AllowAnyHeader();
         });
 });
+builder.Services.AddDbContext<ModelContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ModelDb"));
+});
+
 
 var app = builder.Build();
 
