@@ -1,3 +1,4 @@
+using GeneratorHistory.Db;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
@@ -37,6 +38,11 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
                 logging.UseGrafana();
             });
         });
+        
+using var scope = app.Services.CreateScope();
+var modelContext = scope.ServiceProvider.GetRequiredService<ModelContext>();
+modelContext.Database.EnsureCreated();
+
 
 app.UseRouting();
 app.UseCors(allowSpecificOrigins);

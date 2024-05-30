@@ -1,6 +1,6 @@
-using GeometryGeneratorNonSampled.DTO;
 using GeometryGeneratorNonSampled.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 
 namespace GeometryGeneratorNonSampled.Controllers;
 

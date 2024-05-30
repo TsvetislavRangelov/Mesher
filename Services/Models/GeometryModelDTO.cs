@@ -1,4 +1,4 @@
-namespace GeometryGeneratorNonSampled.DTO;
+﻿namespace Models;
 
 /// <summary>
 /// DTO for generated models.
