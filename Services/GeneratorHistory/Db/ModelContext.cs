@@ -1,5 +1,5 @@
+using GeneratorHistory.Domain;
 using Microsoft.EntityFrameworkCore;
-using Models;
 
 namespace GeneratorHistory.Db;
 

@@ -1,4 +1,4 @@
-namespace Models;
+namespace GeneratorHistory.Domain;
 
 /// <summary>
 /// Domain model representing a generated geometry model.

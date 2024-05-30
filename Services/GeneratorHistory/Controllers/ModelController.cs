@@ -1,5 +1,5 @@
+using GeneratorHistory.Domain;
 using Microsoft.AspNetCore.Mvc;
-using Models;
 
 namespace GeneratorHistory.Controllers;
 
@@ -25,7 +25,7 @@ public class ModelController : ControllerBase
     /// </summary>
     /// <returns><see cref="IActionResult"/>.</returns>
     [HttpPost]
-    public IActionResult SaveModel([FromBody] GeometryModelDto model)
+    public IActionResult SaveModel([FromBody] GeometryModel model)
     {
         Console.WriteLine(model);
         

@@ -1,6 +1,6 @@
+using GeometryGeneratorNonSampled.Domain;
 using GeometryGeneratorNonSampled.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Models;
 
 namespace GeometryGeneratorNonSampled.Controllers;
 
@@ -21,7 +21,7 @@ public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator
     [HttpGet]
     public IActionResult GenerateVertices()
     {
-        var model = generator.GenerateVertices(100);
-        return Ok(new GeometryModelDto(model.Id, model.VertexData));
+        var model = generator.GenerateVertices(500);
+        return Ok(new GeometryModel(model.Id, model.VertexData));
     }
 }
