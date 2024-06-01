@@ -17,7 +17,8 @@ export const saveModelToHistory = async (model: GeometryModel): Promise<number |
     try{
         const res: number = (await axios.post<number>(url + '/Model/SaveModel', {
             vertexData: model.vertexData,
-            id: model.id
+            id: model.id,
+            generatedFor: null
         })).data;
         return res;
     }

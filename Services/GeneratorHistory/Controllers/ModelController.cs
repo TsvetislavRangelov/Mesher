@@ -23,7 +23,7 @@ public class ModelController(ModelContext context) : ControllerBase
         {
             return NotFound();
         }
-        var models = await context.Models!.Where(m => m.Owner == username)
+        var models = await context.Models!.Where(m => m.GeneratedFor == username)
             .Take(25).ToListAsync();
         return Ok(models);
     }

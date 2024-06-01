@@ -34,7 +34,7 @@ function GeneratorNonSampled() {
       </Renderer><Button variant="contained" onClick={() => {
 
         refetch();
-        mutationSave.mutate({vertexData: data.vertexData, id: data.id, owner: user.nickname });
+        mutationSave.mutate({vertexData: data.vertexData, id: data.id, generatedFor: user.nickname });
       }}>Generate</Button></> : <h1>An error has occured.</h1>}
     </div>
 
