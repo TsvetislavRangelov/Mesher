@@ -1,12 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GeneratorHistory.Domain;
 
 /// <summary>
 /// Domain model representing a generated geometry model.
 /// </summary>
-[Table("model")]
 public class GeometryModel(string id, float[] vertexData, string generatedFor)
 {
     [Key]
