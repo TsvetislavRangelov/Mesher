@@ -1,9 +1,12 @@
 import axios from "axios";
-import { url } from "inspector";
 
-export const getHistoryForUser = async (username: string): Promise<GeometryModel[] | undefined> => {
+const url:string = `${import.meta.env.VITE_GW_ROOT_URL}`;
+export const getHistoryForUser = async (username: string | undefined): Promise<GeometryModel[] | undefined> => {
+    if(!username){
+        return;
+    }
     try{
-        const res: GeometryModel[] = (await axios.post<GeometryModel[]>(url + `/Model/GetModelHistory?username=${username}`)).data;
+        const res: GeometryModel[] = (await axios.get<GeometryModel[]>(url + `/Model/GetModelHistory?username=${username}`)).data;
         return res;
     }
     catch(err){

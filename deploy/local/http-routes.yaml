@@ -35,4 +35,6 @@ spec:
         - path:
             type: PathPrefix
             value: /api/Model/SaveModel
-
+        - path:
+            type: PathPrefix
+            value: /api/Model/GetModelHistory

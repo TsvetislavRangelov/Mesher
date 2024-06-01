@@ -9,6 +9,7 @@ import '@fontsource/roboto/700.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from '@mui/material';
 import { useEffect } from 'react';
+import { getHistoryForUser } from '../api/history/generatorHistory';
 function GeneratorNonSampled() {
   const  { isAuthenticated, user } = useAuth0();
   console.log(user);
@@ -21,6 +22,7 @@ function GeneratorNonSampled() {
 
   useEffect(() => {
     refetch();
+    getHistoryForUser(user?.nickname);
   }, [])
 
   const mutationSave = useMutation({
