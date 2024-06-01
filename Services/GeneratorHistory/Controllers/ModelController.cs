@@ -1,5 +1,7 @@
+using GeneratorHistory.Db;
 using GeneratorHistory.Domain;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GeneratorHistory.Controllers;
 
@@ -8,16 +10,22 @@ namespace GeneratorHistory.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class ModelController : ControllerBase
+public class ModelController(ModelContext context) : ControllerBase
 {
     /// <summary>
     /// Endpoint for getting models from history for user.
     /// </summary>
     /// <returns><see cref="IActionResult"/>.</returns>
     [HttpGet]
-    public IActionResult GetModel()
+    public async Task<IActionResult> GetModel([FromQuery] string? username)
     {
-        return Ok();
+        if (username == null)
+        {
+            return NotFound();
+        }
+        var models = await context.Models!.Where(m => m.Owner == username)
+            .Take(25).ToListAsync();
+        return Ok(models);
     }
     
     /// <summary>
@@ -25,10 +33,10 @@ public class ModelController : ControllerBase
     /// </summary>
     /// <returns><see cref="IActionResult"/>.</returns>
     [HttpPost]
-    public IActionResult SaveModel([FromBody] GeometryModel model)
+    public async Task<IActionResult> SaveModel([FromBody] GeometryModel model)
     {
-        Console.WriteLine(model);
-        
+        context.Add(model);
+        await context.SaveChangesAsync();
         return Created();
     }
 }
