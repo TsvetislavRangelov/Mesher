@@ -11,6 +11,7 @@ import { Button } from '@mui/material';
 import { useEffect } from 'react';
 function GeneratorNonSampled() {
   const  { isAuthenticated, user } = useAuth0();
+  console.log(user);
   const {isPending, data, refetch } = useQuery(
   {
     queryKey: ['geometry'],
