@@ -1,65 +1,53 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mssql-hist
+  name: postgres-hist
   labels:
-    app: mssql-hist
+    app: postgres-hist
 spec:
   ports:
-  - port: 1433
-    name: mssql-hist
+  - port: 5432
+    name: postgres-hist
+  clusterIP: None
   selector:
-    app: mssql-hist
+    app: postgres-hist
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mssql-hist
+  name: postgres-hist
 spec:
   selector:
     matchLabels:
-      app: mssql-hist
-  serviceName: "mssql-hist"
+      app: postgres-hist
+  serviceName: "postgres-hist"
   replicas: 1
   template:
     metadata:
       labels:
-        app: mssql-hist
+        app: postgres-hist
     spec:
       containers:
-      - name: mssql-hist
-        image: mcr.microsoft.com/mssql/server:2019-latest
+      - name: postgres-hist
+        image: postgres:13
         ports:
-        - containerPort: 1433
-          name: mssql-hist
+        - containerPort: 5432
+          name: postgres-hist
         env:
-        - name: ACCEPT_EULA
-          value: "Y"
-        - name: MSSQL_SA_PASSWORD
-          value: "S3curePassword!"
+        - name: POSTGRES_DB
+          value: modeldb
+        - name: POSTGRES_USER
+          value: pguser
+        - name: POSTGRES_PASSWORD
+          value: S3curePassword!
         volumeMounts:
-        - name: mssql-data
-          mountPath: /var/opt/mssql
-      volumes:
-      - name: mssql-data
-        persistentVolumeClaim:
-          claimName: mssql-data
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mssql-data
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: mssql-secret
-type: Opaque
-data:
-  SA_PASSWORD: "czNjdXJlUGFzc3dvcmQhCg=="  # This is 'securePassword' base64 encoded
+        - name: postgres-data
+          mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi

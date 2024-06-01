@@ -25,7 +25,7 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddDbContext<ModelContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ModelDb"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ModelDb"));
 });
 
 
