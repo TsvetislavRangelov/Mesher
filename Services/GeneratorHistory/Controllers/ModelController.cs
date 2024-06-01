@@ -17,7 +17,7 @@ public class ModelController(ModelContext context) : ControllerBase
     /// </summary>
     /// <returns><see cref="IActionResult"/>.</returns>
     [HttpGet]
-    public async Task<IActionResult> GetModel([FromQuery] string? username)
+    public async Task<IActionResult> GetModelHistory([FromQuery] string? username)
     {
         if (username == null)
         {

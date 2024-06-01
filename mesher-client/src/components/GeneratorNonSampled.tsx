@@ -10,7 +10,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from '@mui/material';
 import { useEffect } from 'react';
 function GeneratorNonSampled() {
-  const  { isAuthenticated } = useAuth0();
+  const  { isAuthenticated, user } = useAuth0();
   const {isPending, data, refetch } = useQuery(
   {
     queryKey: ['geometry'],
@@ -22,14 +22,6 @@ function GeneratorNonSampled() {
     refetch();
   }, [])
 
-  // const mutationGeometry = useMutation({
-  //   mutationFn: generateVertices,
-  //   onSuccess: () => {
-  //     // Invalidate and refetch
-  //     queryClient.invalidateQueries({ queryKey: ['geometry'] });
-  //   },
-  // });
-
   const mutationSave = useMutation({
     mutationFn: saveModelToHistory
   });
@@ -38,10 +30,11 @@ function GeneratorNonSampled() {
   if(!isAuthenticated) return <h1>401 Forbidden</h1>
   return (
     <div>
-    {data && isAuthenticated ? <><Renderer mesh={<Mesh geometry={data.vertexData} id={data.id}></Mesh>}>
+    {data && isAuthenticated && user?.nickname ? <><Renderer mesh={<Mesh geometry={data.vertexData} id={data.id}></Mesh>}>
       </Renderer><Button variant="contained" onClick={() => {
+
         refetch();
-        mutationSave.mutate({vertexData: data.vertexData, id: data.id});
+        mutationSave.mutate({vertexData: data.vertexData, id: data.id, owner: user.nickname });
       }}>Generate</Button></> : <h1>An error has occured.</h1>}
     </div>
 
