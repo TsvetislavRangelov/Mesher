@@ -1,37 +1,37 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mssql-gen-history
+  name: mssql-hist
   labels:
-    app: mssql-gen-history
+    app: mssql-hist
 spec:
   ports:
   - port: 1433
-    name: mssql-gen-history
+    name: mssql-hist
   selector:
-    app: mssql-gen-history
+    app: mssql-hist
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mssql-gen-history
+  name: mssql-hist
 spec:
   selector:
     matchLabels:
-      app: mssql-gen-history
-  serviceName: "mssql-gen-history"
+      app: mssql-hist
+  serviceName: "mssql-hist"
   replicas: 1
   template:
     metadata:
       labels:
-        app: mssql-gen-history
+        app: mssql-hist
     spec:
       containers:
-      - name: mssql
+      - name: mssql-hist
         image: mcr.microsoft.com/mssql/server:2019-latest
         ports:
         - containerPort: 1433
-          name: mssql-gen-history
+          name: mssql-hist
         env:
         - name: ACCEPT_EULA
           value: "Y"
