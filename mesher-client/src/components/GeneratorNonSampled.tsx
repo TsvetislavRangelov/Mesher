@@ -7,9 +7,10 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Button } from '@mui/material';
+import { Button, CircularProgress, Grid } from '@mui/material';
 import { useEffect } from 'react';
 import { getHistoryForUser } from '../api/history/generatorHistory';
+import Unauthenticated from './Unauthenticated';
 function GeneratorNonSampled() {
   const  { isAuthenticated, user } = useAuth0();
   console.log(user);
@@ -29,13 +30,21 @@ function GeneratorNonSampled() {
     mutationFn: saveModelToHistory
   });
   
-  if(isPending) return <div>Loading...</div>
-  if(!isAuthenticated) return <h1>401 Forbidden</h1>
+  if(!isAuthenticated) return <Unauthenticated />;
+  if(isPending) return <div>
+    <Grid
+  container
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justifyContent="center"
+  sx={{ minHeight: '100vh' }}><CircularProgress  size={150} />
+  Loading...</Grid>
+  </div>
   return (
     <div>
     {data && isAuthenticated && user?.nickname ? <><Renderer mesh={<Mesh geometry={data.vertexData} id={data.id}></Mesh>}>
       </Renderer><Button variant="contained" onClick={() => {
-
         refetch();
         mutationSave.mutate({vertexData: data.vertexData, id: data.id, generatedFor: user.nickname });
       }}>Generate</Button></> : <h1>An error has occured.</h1>}
