@@ -13,8 +13,6 @@ namespace GeometryGeneratorNonSampled.Controllers;
 [Route("api/[controller]/[action]")]
 public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator, ISender rabbitMqProducer) : ControllerBase
 {
-
-
     /// <summary>
     /// Endpoint for procedurally generating vertices.
     /// </summary>

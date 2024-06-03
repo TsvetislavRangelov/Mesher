@@ -11,8 +11,16 @@ namespace GeneratorHistory.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class ModelController(ModelContext context, IReceiver receiver) : ControllerBase
+public class ModelController : ControllerBase
 {
+    private readonly ModelContext _context;
+    public ModelController(ModelContext context, IReceiver receiver)
+    {
+        _context = context;
+        receiver.Receive();
+    }
+    
+    
     /// <summary>
     /// Endpoint for getting models from history for user.
     /// </summary>
@@ -24,7 +32,7 @@ public class ModelController(ModelContext context, IReceiver receiver) : Control
         {
             return NotFound();
         }
-        var models = await context.Models!.Where(m => m.GeneratedFor == username)
+        var models = await _context.Models!.Where(m => m.GeneratedFor == username)
             .Take(25).ToListAsync();
         return Ok(models);
     }
@@ -36,8 +44,8 @@ public class ModelController(ModelContext context, IReceiver receiver) : Control
     [HttpPost]
     public async Task<IActionResult> SaveModel([FromBody] GeometryModel model)
     {
-        context.Add(model);
-        await context.SaveChangesAsync();
+        _context.Add(model);
+        await _context.SaveChangesAsync();
         return Created();
     }
 }

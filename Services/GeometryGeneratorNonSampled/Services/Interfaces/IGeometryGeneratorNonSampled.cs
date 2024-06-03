@@ -10,6 +10,6 @@ public interface IGeometryGeneratorNonSampled
     /// <summary>
     /// Procedurally generates vertices.
     /// </summary>
-    /// <returns>A <see cref="Vector3Model"/> representing a point in 3D space (vertex).</returns>
+    /// <returns>A <see cref="GeometryModel"/> containing vertex data.</returns>
     public GeometryModel GenerateVertices(int? vertexCount);
 }
