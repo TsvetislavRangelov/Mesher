@@ -1,5 +1,6 @@
 using GeneratorHistory.Db;
 using GeneratorHistory.RabbitMQ;
+using GeneratorHistory.Services.Interfaces;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
@@ -29,7 +30,7 @@ builder.Services.AddDbContext<ModelContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ModelDb"));
 });
 
-builder.Services.AddSingleton<Receiver, Receiver>();
+builder.Services.AddSingleton<IReceiver, Receiver>();
 
 var app = builder.Build();
 
