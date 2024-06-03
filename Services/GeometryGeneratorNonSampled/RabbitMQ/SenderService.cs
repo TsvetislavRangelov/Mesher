@@ -20,7 +20,7 @@ public class SenderService : ISender
         var connection = factory.CreateConnection(); 
         _channel = connection.CreateModel();
 
-        _channel?.QueueDeclare(queue: "/hello",
+        _channel?.QueueDeclare(queue: "hello",
             durable: true,
             exclusive: false,
             autoDelete: false,
@@ -37,7 +37,7 @@ public class SenderService : ISender
         var body = Encoding.UTF8.GetBytes(json);
         Console.WriteLine("Sending message!!!!");
         _channel.BasicPublish(exchange: string.Empty,
-            routingKey: "/hello",
+            routingKey: "hello",
             basicProperties: null,
             body: body);
     }
