@@ -33,20 +33,6 @@ builder.Services.AddDbContext<ModelContext>(options =>
 builder.Services.AddSingleton<IReceiver, Receiver>();
 
 var app = builder.Build();
-
-using var tracerProvider = Sdk.CreateTracerProviderBuilder()
-            .UseGrafana()
-            .Build();
-        using var meterProvider = Sdk.CreateMeterProviderBuilder()
-            .UseGrafana()
-            .Build();
-        using var loggerFactory = LoggerFactory.Create(builder =>
-        {
-            builder.AddOpenTelemetry(logging =>
-            {
-                logging.UseGrafana();
-            });
-        });
         
 using var scope = app.Services.CreateScope();
 var modelContext = scope.ServiceProvider.GetRequiredService<ModelContext>();
