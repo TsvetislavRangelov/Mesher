@@ -1,5 +1,7 @@
 using System.Text;
+using GeneratorHistory.Domain;
 using GeneratorHistory.Services.Interfaces;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -31,9 +33,11 @@ public class Receiver : IReceiver
         var consumer = new EventingBasicConsumer(_channel);
         consumer.Received += (model, ea) =>
         {
+            
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
-            Console.WriteLine($" [x] Received {message}");
+            var deserialized = JsonConvert.DeserializeObject<GeometryModel>(message);
+            Console.WriteLine($" [x] Received {deserialized}");
         };
         _channel.BasicConsume(queue: "hello",
             autoAck: true,

@@ -2,11 +2,6 @@ using GeometryGeneratorNonSampled.RabbitMQ;
 using GeometryGeneratorNonSampled.Services.Implementation;
 using GeometryGeneratorNonSampled.Services.Interfaces;
 
-using OpenTelemetry;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Trace;
-using Grafana.OpenTelemetry;
-
 const string allowSpecificOrigins = "dev";
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,21 +25,6 @@ builder.Services.AddSingleton<IGeometryGeneratorNonSampled, GeometryGeneratorNon
 builder.Services.AddSingleton<ISender, SenderService>();
 
 var app = builder.Build();
-
-using var tracerProvider = Sdk.CreateTracerProviderBuilder()
-            .UseGrafana()
-            .Build();
-        using var meterProvider = Sdk.CreateMeterProviderBuilder()
-            .UseGrafana()
-            .Build();
-        using var loggerFactory = LoggerFactory.Create(builder =>
-        {
-            builder.AddOpenTelemetry(logging =>
-            {
-                logging.UseGrafana();
-            });
-        });
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -20,7 +20,7 @@ public class SenderService : ISender
         var connection = factory.CreateConnection(); 
         _channel = connection.CreateModel();
 
-        _channel?.QueueDeclare(queue: "hello",
+        _channel?.QueueDeclare(queue: "/hello",
             durable: true,
             exclusive: false,
             autoDelete: false,
@@ -33,13 +33,12 @@ public class SenderService : ISender
     public void Send(object? message)
     {
         ArgumentNullException.ThrowIfNull(message);
-        var strObject = message.ToString();
-        var body = Encoding.UTF8.GetBytes(strObject!);
+        var json = Newtonsoft.Json.JsonConvert.SerializeObject(message);
+        var body = Encoding.UTF8.GetBytes(json);
         _channel.BasicPublish(exchange: string.Empty,
-            routingKey: "hello",
+            routingKey: "/hello",
             basicProperties: null,
             body: body);
-        Console.WriteLine($" [x] Sent {message}");
     }
     /// <summary>
     /// C`tor.
