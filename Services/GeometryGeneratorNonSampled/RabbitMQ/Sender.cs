@@ -1,4 +1,5 @@
 using System.Text;
+using GeometryGeneratorNonSampled.Services.Interfaces;
 using RabbitMQ.Client;
 
 namespace GeometryGeneratorNonSampled.RabbitMQ;
@@ -6,7 +7,7 @@ namespace GeometryGeneratorNonSampled.RabbitMQ;
 /// <summary>
 /// Rabbit MQ Producer.
 /// </summary>
-public abstract class Sender
+public class Sender : ISender
 {
     private IModel? _channel;
 
@@ -47,5 +48,4 @@ public abstract class Sender
     {
         Configure();
     }
-    
 }

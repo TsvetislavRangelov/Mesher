@@ -1,7 +1,7 @@
 import Mesh from './Mesh';
 import Renderer from './Renderer';
-import { generateVertices, saveModelToHistory } from '../api/geometry/geometryGeneratorNonSampled';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { generateVertices } from '../api/geometry/geometryGeneratorNonSampled';
+import { useQuery } from '@tanstack/react-query';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -9,7 +9,6 @@ import '@fontsource/roboto/700.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Button, CircularProgress, Grid } from '@mui/material';
 import { useEffect } from 'react';
-import { getHistoryForUser } from '../api/history/generatorHistory';
 import Unauthenticated from './Unauthenticated';
 function GeneratorNonSampled() {
   const  { isAuthenticated, user } = useAuth0();
@@ -24,10 +23,6 @@ function GeneratorNonSampled() {
   useEffect(() => {
     refetch();
   }, [])
-
-  const mutationSave = useMutation({
-    mutationFn: saveModelToHistory
-  });
   
   if(!isAuthenticated) return <Unauthenticated />;
   if(isPending) return <div>
