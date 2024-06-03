@@ -59,5 +59,6 @@ app.UseCors(allowSpecificOrigins);
 app.UseAuthorization();
 
 app.MapControllers();
-
+var receiver = new Receiver();
+receiver.Receive();
 app.Run();
