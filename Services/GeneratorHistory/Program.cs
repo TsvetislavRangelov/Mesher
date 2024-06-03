@@ -1,4 +1,5 @@
 using GeneratorHistory.Db;
+using GeneratorHistory.RabbitMQ;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
