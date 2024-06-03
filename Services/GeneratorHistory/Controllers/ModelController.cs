@@ -1,6 +1,6 @@
 using GeneratorHistory.Db;
 using GeneratorHistory.Domain;
-using GeneratorHistory.RabbitMQ;
+using GeneratorHistory.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +11,7 @@ namespace GeneratorHistory.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class ModelController(ModelContext context, Receiver receiver) : ControllerBase
+public class ModelController(ModelContext context, IReceiver receiver) : ControllerBase
 {
     /// <summary>
     /// Endpoint for getting models from history for user.

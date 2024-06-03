@@ -11,7 +11,7 @@ namespace GeometryGeneratorNonSampled.Controllers;
 /// <param name="generator">The generator service.</param>
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator, Sender rabbitMqProducer) : ControllerBase
+public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator, ISender rabbitMqProducer) : ControllerBase
 {
 
 

@@ -27,7 +27,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddSingleton<IGeometryGeneratorNonSampled, GeometryGeneratorNonSampledService>();
-builder.Services.AddSingleton<ISender, Sender>();
+builder.Services.AddSingleton<ISender, SenderService>();
 
 var app = builder.Build();
 

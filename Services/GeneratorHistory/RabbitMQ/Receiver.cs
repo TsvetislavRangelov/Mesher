@@ -1,4 +1,5 @@
 using System.Text;
+using GeneratorHistory.Services.Interfaces;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -7,7 +8,7 @@ namespace GeneratorHistory.RabbitMQ;
 /// <summary>
 /// RabbitMQ receiver.
 /// </summary>
-public class Receiver
+public class Receiver : IReceiver
 {
     /// <summary>
     /// C`tor.

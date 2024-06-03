@@ -7,7 +7,7 @@ namespace GeometryGeneratorNonSampled.RabbitMQ;
 /// <summary>
 /// Rabbit MQ Producer.
 /// </summary>
-public class Sender : ISender
+public class SenderService : ISender
 {
     private IModel? _channel;
 
@@ -44,7 +44,7 @@ public class Sender : ISender
     /// <summary>
     /// C`tor.
     /// </summary>
-    protected Sender()
+    protected SenderService()
     {
         Configure();
     }
