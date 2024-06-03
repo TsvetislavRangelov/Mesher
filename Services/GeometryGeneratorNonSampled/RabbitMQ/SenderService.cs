@@ -35,6 +35,7 @@ public class SenderService : ISender
         ArgumentNullException.ThrowIfNull(message);
         var json = Newtonsoft.Json.JsonConvert.SerializeObject(message);
         var body = Encoding.UTF8.GetBytes(json);
+        Console.WriteLine("Sending message!!!!");
         _channel.BasicPublish(exchange: string.Empty,
             routingKey: "/hello",
             basicProperties: null,

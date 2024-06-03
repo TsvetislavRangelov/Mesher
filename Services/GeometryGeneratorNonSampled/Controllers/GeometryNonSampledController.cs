@@ -1,5 +1,4 @@
 using GeometryGeneratorNonSampled.Domain;
-using GeometryGeneratorNonSampled.RabbitMQ;
 using GeometryGeneratorNonSampled.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
