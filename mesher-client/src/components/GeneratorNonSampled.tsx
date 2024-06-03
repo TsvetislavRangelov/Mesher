@@ -12,7 +12,6 @@ import { useEffect } from 'react';
 import Unauthenticated from './Unauthenticated';
 function GeneratorNonSampled() {
   const  { isAuthenticated, user } = useAuth0();
-  console.log(user);
   const {isPending, data, refetch } = useQuery(
   {
     queryKey: ['geometry'],

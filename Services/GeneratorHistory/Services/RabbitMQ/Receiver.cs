@@ -3,7 +3,7 @@ using GeneratorHistory.Services.Interfaces;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace GeneratorHistory.RabbitMQ;
+namespace GeneratorHistory.Services.RabbitMQ;
 
 /// <summary>
 /// RabbitMQ receiver.

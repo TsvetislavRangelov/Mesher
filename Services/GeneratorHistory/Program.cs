@@ -1,10 +1,6 @@
 using GeneratorHistory.Db;
-using GeneratorHistory.RabbitMQ;
+using GeneratorHistory.Services.RabbitMQ;
 using GeneratorHistory.Services.Interfaces;
-using OpenTelemetry;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Trace;
-using Grafana.OpenTelemetry;
 using Microsoft.EntityFrameworkCore;
 
 const string allowSpecificOrigins = "dev";
