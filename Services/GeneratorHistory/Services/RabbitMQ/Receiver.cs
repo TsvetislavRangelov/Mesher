@@ -37,7 +37,7 @@ public class Receiver : IReceiver
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
             var deserialized = JsonConvert.DeserializeObject<GeometryModel>(message);
-            Console.WriteLine($" [x] Received {deserialized}");
+            Console.WriteLine($" [x] Received {deserialized?.Id}");
         };
         _channel.BasicConsume(queue: "hello",
             autoAck: true,
