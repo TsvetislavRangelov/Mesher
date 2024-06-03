@@ -23,7 +23,6 @@ function GeneratorNonSampled() {
 
   useEffect(() => {
     refetch();
-    getHistoryForUser(user?.nickname);
   }, [])
 
   const mutationSave = useMutation({
@@ -46,7 +45,7 @@ function GeneratorNonSampled() {
     {data && isAuthenticated && user?.nickname ? <><Renderer mesh={<Mesh geometry={data.vertexData} id={data.id}></Mesh>}>
       </Renderer><Button variant="contained" onClick={() => {
         refetch();
-        mutationSave.mutate({vertexData: data.vertexData, id: data.id, generatedFor: user.nickname });
+        //mutationSave.mutate({vertexData: data.vertexData, id: data.id, generatedFor: user.nickname });
       }}>Generate</Button></> : <h1>An error has occured.</h1>}
     </div>
 

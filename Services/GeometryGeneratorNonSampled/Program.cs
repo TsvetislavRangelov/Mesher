@@ -1,3 +1,4 @@
+using GeometryGeneratorNonSampled.RabbitMQ;
 using GeometryGeneratorNonSampled.Services.Implementation;
 using GeometryGeneratorNonSampled.Services.Interfaces;
 
@@ -26,6 +27,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddSingleton<IGeometryGeneratorNonSampled, GeometryGeneratorNonSampledService>();
+builder.Services.AddSingleton<Sender, Sender>();
 
 var app = builder.Build();
 
@@ -42,11 +44,6 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
                 logging.UseGrafana();
             });
         });
-
-foreach (var c in builder.Configuration.AsEnumerable())
-{
-    Console.WriteLine(c.Key + " = " + c.Value);
-}
 
 
 // Configure the HTTP request pipeline.

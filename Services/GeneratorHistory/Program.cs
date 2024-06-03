@@ -29,6 +29,7 @@ builder.Services.AddDbContext<ModelContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ModelDb"));
 });
 
+builder.Services.AddSingleton<Receiver, Receiver>();
 
 var app = builder.Build();
 
