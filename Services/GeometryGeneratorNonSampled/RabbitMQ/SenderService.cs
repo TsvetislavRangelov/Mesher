@@ -44,7 +44,7 @@ public class SenderService : ISender
     /// <summary>
     /// C`tor.
     /// </summary>
-    protected SenderService()
+    public SenderService()
     {
         Configure();
     }
