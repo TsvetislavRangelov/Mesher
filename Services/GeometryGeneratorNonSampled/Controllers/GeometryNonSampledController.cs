@@ -1,4 +1,5 @@
 using GeometryGeneratorNonSampled.Domain;
+using GeometryGeneratorNonSampled.RabbitMQ;
 using GeometryGeneratorNonSampled.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +11,7 @@ namespace GeometryGeneratorNonSampled.Controllers;
 /// <param name="generator">The generator service.</param>
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator) : ControllerBase
+public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator, Sender rabbitMqProducer) : ControllerBase
 {
 
 
@@ -22,6 +23,7 @@ public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator
     public IActionResult GenerateVertices()
     {
         var model = generator.GenerateVertices(500);
+        rabbitMqProducer.Send(model);
         return Ok(new GeometryModel(model.Id, model.VertexData));
     }
 }
