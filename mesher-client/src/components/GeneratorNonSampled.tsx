@@ -15,7 +15,9 @@ function GeneratorNonSampled() {
   const {isPending, data, refetch } = useQuery(
   {
     queryKey: ['geometry'],
-    queryFn: generateVertices,
+    queryFn: () => {
+      return generateVertices(user?.nickname);
+    },
     enabled: false
   });
 

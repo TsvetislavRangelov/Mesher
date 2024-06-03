@@ -9,7 +9,7 @@ namespace GeometryGeneratorNonSampled.Services.Implementation;
 public class GeometryGeneratorNonSampledService : IGeometryGeneratorNonSampled
 {
     private readonly Random _rand = new();
-    public GeometryModel GenerateVertices(int? vertexCount)
+    public GeometryModel GenerateVertices(int? vertexCount, string? generatedFor)
     {
         if (vertexCount == 0)
         {
@@ -26,7 +26,7 @@ public class GeometryGeneratorNonSampledService : IGeometryGeneratorNonSampled
             }
             vertices[i] = floatProduct;
         }
-        
-        return new GeometryModel(GuidGenerator.GenerateUid(), vertices);
+
+        return new GeometryModel(GuidGenerator.GenerateUid(), vertices, generatedFor);
     }
 }

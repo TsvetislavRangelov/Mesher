@@ -17,10 +17,10 @@ public class GeometryNonSampledController(IGeometryGeneratorNonSampled generator
     /// </summary>
     /// <returns><see cref="IActionResult"/>.</returns>
     [HttpGet]
-    public IActionResult GenerateVertices()
+    public IActionResult GenerateVertices([FromQuery] string? username)
     {
-        var model = generator.GenerateVertices(500);
+        var model = generator.GenerateVertices(500, username);
         rabbitMqProducer.Send(model);
-        return Ok(new GeometryModel(model.Id, model.VertexData));
+        return Ok(model);
     }
 }

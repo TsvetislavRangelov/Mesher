@@ -25,7 +25,7 @@ public class GeometryGeneratorNonSampledServiceTest
     [TestCase(0)]
     public void TestGenerateVertices(int? vertexCount)
     {
-        var geometryModel = _mockGeneratorNonSampled!.GenerateVertices(vertexCount);
+        var geometryModel = _mockGeneratorNonSampled!.GenerateVertices(vertexCount, null);
         Assert.That(geometryModel, Is.Not.Null);
         Assert.That(geometryModel.VertexData, Has.Length.AtLeast(3));
     }

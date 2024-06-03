@@ -11,5 +11,5 @@ public interface IGeometryGeneratorNonSampled
     /// Procedurally generates vertices.
     /// </summary>
     /// <returns>A <see cref="GeometryModel"/> containing vertex data.</returns>
-    public GeometryModel GenerateVertices(int? vertexCount);
+    public GeometryModel GenerateVertices(int? vertexCount, string? generatedFor);
 }
