@@ -1,29 +1,31 @@
 import Mesh from './Mesh';
 import Renderer from './Renderer';
 import { generateVertices } from '../api/geometry/geometryGeneratorNonSampled';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Button, CircularProgress, Grid } from '@mui/material';
-import { useEffect } from 'react';
 import Unauthenticated from './Unauthenticated';
+import { useEffect, useState } from 'react';
 function GeneratorNonSampled() {
   const  { isAuthenticated, user } = useAuth0();
-  const {isPending, data, refetch } = useQuery(
-  {
-    queryKey: ['geometry'],
-    queryFn: () => {
-      return generateVertices(user?.nickname);
-    },
-    enabled: false
+  const [isPending, setIsPending] = useState<boolean>(true);
+  const [model, setModel] = useState<GeometryModel>();
+
+  const refetchMutation = useMutation({
+    mutationFn: async (username: string | undefined) => {
+      setIsPending(false);
+      const model = await generateVertices(username)
+      setModel(model);
+    }
   });
 
   useEffect(() => {
-    refetch();
-  }, [])
+    refetchMutation.mutate(user?.nickname);
+  }, [user?.nickname])
   
   if(!isAuthenticated) return <Unauthenticated />;
   if(isPending) return <div>
@@ -38,10 +40,9 @@ function GeneratorNonSampled() {
   </div>
   return (
     <div>
-    {data && isAuthenticated && user?.nickname ? <><Renderer mesh={<Mesh geometry={data.vertexData} id={data.id}></Mesh>}>
+    { isAuthenticated && user?.nickname && model ? <><Renderer mesh={<Mesh geometry={model.vertexData} id={model.id}></Mesh>}>
       </Renderer><Button variant="contained" onClick={() => {
-        refetch();
-        //mutationSave.mutate({vertexData: data.vertexData, id: data.id, generatedFor: user.nickname });
+        refetchMutation.mutate(user.nickname!);
       }}>Generate</Button></> : <h1>An error has occured.</h1>}
     </div>
 
