@@ -34,6 +34,7 @@ public class ModelController(ModelContext context) : ControllerBase
     /// </summary>
     /// <returns><see cref="IActionResult"/>.</returns>
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> SaveModel([FromBody] GeometryModel model)
     {
         context.Add(model);
