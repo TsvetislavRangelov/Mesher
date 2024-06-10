@@ -138,7 +138,10 @@ function Navbar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Link style={{textDecoration: 'none', color: 'black' }} to={`${setting}`}>
                     <Typography textAlign="center">{setting}</Typography>
+                    </Link>
+                    
                   </MenuItem>
                 ))}
               </Menu>

@@ -18,7 +18,7 @@ function GeneratorNonSampled() {
   const refetchMutation = useMutation({
     mutationFn: async (username: string | undefined) => {
       setIsPending(false);
-      const model = await generateVertices(username)
+      const model = await generateVertices(username);
       setModel(model);
     }
   });

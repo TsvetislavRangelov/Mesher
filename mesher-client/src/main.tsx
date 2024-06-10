@@ -10,6 +10,7 @@ import ErrorPage from './routes/ErrorPage.tsx';
 import Root from './routes/Root.tsx';
 import GeneratorNonSampled from './components/GeneratorNonSampled.tsx';
 import Landing from './routes/Landing.tsx';
+import Profile from './routes/Profile.tsx';
 
 const httpClient = new QueryClient({
   defaultOptions: {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "generator",
         element: <GeneratorNonSampled />,
+      },
+      {
+        path: "profile",
+        element: <Profile />
       }
     ]
   },
