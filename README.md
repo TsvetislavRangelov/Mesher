@@ -22,12 +22,17 @@ npm run production # production
 # Deploy to a kubernetes cluster of your choosing (example uses docker-desktop kubernetes).
 kubectl config use-context docker-desktop
 cd /deploy/local
+kubectl apply -f ../general
 ./deploy-local-kubectl.sh
 ```
 The script that is executed will deploy and expose an Envoy API Gateway, with the external IP being the loopback address. Afterwards, it will deploy all the microservices present in the `/Services` folder. 
 
 ## Structure
 This is the monorepo for Mesher. It contains all services related to mesher, both client and server. The client-side can be found under `mesher-client` and the backend services can be found under `Services`. The server-side is written in .NET 8.0 and the client is made with React TypeScript.
+
+## URLs
+The web client is hosted via CloudFlare at https://mesher.pages.dev/. The microservices are deployed on 
+Azure, on an Azure Kubernetes Service. 
 
 ## Contributing
 
@@ -39,3 +44,4 @@ to discuss what you would like to change.
 ## License
 
 To be updated.
+
