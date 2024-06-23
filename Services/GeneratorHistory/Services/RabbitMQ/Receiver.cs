@@ -13,6 +13,9 @@ namespace GeneratorHistory.Services.RabbitMQ;
 public class Receiver : IReceiver
 {
     private IModel? _channel;
+    /// <summary>
+    /// Sets up the Receiver.
+    /// </summary>
     private void Configure()
     {
         var factory = new ConnectionFactory { HostName = "rabbitmq" };
@@ -26,6 +29,10 @@ public class Receiver : IReceiver
             arguments: null);
     }
 
+    /// <summary>
+    /// Subscribes to the <see cref="EventingBasicConsumer.Received"/> event listener and
+    /// decodes the message from JSON to <see cref="GeometryModel"/>
+    /// </summary>
     public void Receive()
     {
         Console.WriteLine(" [*] Waiting for messages.");

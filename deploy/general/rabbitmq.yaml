@@ -42,10 +42,10 @@ spec:
           env:
             - name: RABBITMQ_ERLANG_COOKIE
               value: "secret-cookie"
-            - name: RABBITMQ_DEFAULT_USER
-              value: "admin"
-            - name: RABBITMQ_DEFAULT_PASS
-              value: "password"
+            - name: DEFAULT_USER
+              value: "guest"
+            - name: DEFAULT_PASS
+              value: "guest"
           volumeMounts:
             - name: rabbitmq-data
               mountPath: /var/lib/rabbitmq
